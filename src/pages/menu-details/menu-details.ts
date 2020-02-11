@@ -21,6 +21,7 @@ export class MenuDetailsPage {
   visible: any;
   TopReview: any;
   hvInfo: boolean;
+  hvInfo1:boolean;
   rating2: any;
 
   profileList: any;
@@ -233,8 +234,10 @@ export class MenuDetailsPage {
       data => {
         if (data == false) {
           this.hvInfo = true;
+          this.hvInfo1 = false;
         } else {
           this.hvInfo = false;
+          this.hvInfo1 = true;
           this.TopReview = data;
           for (var i = 0; i < this.TopReview.length; i++) {
             if (this.TopReview[i].cleanlinessRating == 1) {

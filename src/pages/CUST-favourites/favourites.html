@@ -81,7 +81,10 @@
             {{profile.menu_category}}
           </p>
         </div>
-        <div class="discover-ratings" >
+        <div *ngIf="!profile.avgRating">
+            No Reviews Yet
+        </div>
+        <div class="discover-ratings" *ngIf="profile.avgRating">
           <span
             class="each-star"
             [ngClass]="{'active' : profile.avgRating > 0}"

@@ -130,9 +130,12 @@
           </ion-grid>
         </ion-card>
       </div>
-      <button class="wholebutton right" (click)="allReviews()">
+      <button class="wholebutton right" (click)="allReviews()" [hidden]="hvInfo">
         See all Reviews
       </button>
+    </div>
+    <div text-center [hidden]="hvInfo1" style="margin-top:-47px">
+    <h4>No Reviews yet</h4>
     </div>
     <div class="related-con">
       <h5 id="menuDetails-heading4" style="color:#000000;font-size:1.6rem;">
