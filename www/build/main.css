@@ -36974,6 +36974,84 @@ page-pdp-menus .button-clear-md:hover:not(.disable-hover) {
   background-color: #ffd369;
 }
 
+page-cust-booking-details .menu-list .menu-item-each {
+  padding-left: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  page-cust-booking-details .menu-list .menu-item-each {
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+page-cust-booking-details .menu-list .menu-item-each ion-label {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 0;
+}
+
+page-cust-booking-details .menu-list .menu-item-each img {
+  width: 70px;
+  height: 70px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+page-cust-booking-details .menu-list .menu-item-each p {
+  display: inline-block;
+  margin-left: 10px;
+  margin-bottom: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+page-cust-past-booking-details .menu-list .menu-item-each {
+  padding-left: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  page-cust-past-booking-details .menu-list .menu-item-each {
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+page-cust-past-booking-details .menu-list .menu-item-each ion-label {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 0;
+}
+
+page-cust-past-booking-details .menu-list .menu-item-each img {
+  width: 70px;
+  height: 70px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+page-cust-past-booking-details .menu-list .menu-item-each p {
+  display: inline-block;
+  margin-left: 10px;
+  margin-bottom: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
 page-discover .searchbar-md {
   padding-left: 0;
   padding-right: 0;

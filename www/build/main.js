@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 108:
+/***/ 110:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9,11 +9,13 @@ webpackJsonp([0],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PDP_tabs_PDP_tabs__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_PDP_profileData__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_PDP_bookingData__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_PDP_dashboardData__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_PDP_profileData__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_PDP_bookingData__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_PDP_dashboardData__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__tabs_controller_tabs_controller__ = __webpack_require__(228);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_PDP_menuData__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_Cust_bookingData__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_Cust_pastBookingData__ = __webpack_require__(58);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -32,8 +34,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var LoginPage = /** @class */ (function () {
-    function LoginPage(navCtrl, http, loadingCtrl, dashboardData, bookingData, menusData, profileData) {
+    function LoginPage(navCtrl, http, loadingCtrl, dashboardData, bookingData, menusData, profileData, custBookData, custPBookData) {
         this.navCtrl = navCtrl;
         this.http = http;
         this.loadingCtrl = loadingCtrl;
@@ -41,6 +45,8 @@ var LoginPage = /** @class */ (function () {
         this.bookingData = bookingData;
         this.menusData = menusData;
         this.profileData = profileData;
+        this.custBookData = custBookData;
+        this.custPBookData = custPBookData;
         this.loading = this.loadingCtrl.create({
             spinner: 'crescent',
             content: 'Authenticating'
@@ -136,14 +142,16 @@ var LoginPage = /** @class */ (function () {
         });
     };
     LoginPage.prototype.login = function (custId) {
+        this.custBookData.getBookData();
+        this.custPBookData.getPBookData();
         this.loading.present();
         this.custLogin(custId);
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login-page',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\login-page\login-page.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Login\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page2">\n\n  <div style="text-align:center;">\n\n    <img\n\n      src="../../assets/imgs/foodie_logo.png"\n\n      style="margin-top:100px;margin-bottom:50px;padding-left:50px;padding-right:50px;"\n\n    />\n\n  </div>\n\n  <div style="max-width:500px;margin-left:auto;margin-right:auto;">\n\n    <form id="loginPage-form1">\n\n      <ion-item id="loginPage-input1" class="markdown login-field-con">\n\n        <ion-label>\n\n          Username :\n\n        </ion-label>\n\n        <ion-input\n\n          type="text"\n\n          [(ngModel)]="username"\n\n          [ngModelOptions]="{standalone:true}"\n\n          placeholder=""\n\n        ></ion-input>\n\n      </ion-item>\n\n    </form>\n\n    <button\n\n      id="loginPage-button1"\n\n      class="login-btn"\n\n      ion-button\n\n      color="positive"\n\n      block\n\n      (click)="login(this.username)"\n\n    >\n\n      Login\n\n    </button>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\login-page\login-page.html"*/
+            selector: 'page-login-page',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\login-page\login-page.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Login\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page2">\n\n  <div style="text-align:center;">\n\n    <img\n\n      src="../../assets/imgs/foodie_logo.png"\n\n      style="margin-top:100px;margin-bottom:50px;padding-left:50px;padding-right:50px;"\n\n    />\n\n  </div>\n\n  <div style="max-width:500px;margin-left:auto;margin-right:auto;">\n\n    <form id="loginPage-form1">\n\n      <ion-item id="loginPage-input1" class="markdown login-field-con">\n\n        <ion-label>\n\n          Username :\n\n        </ion-label>\n\n        <ion-input\n\n          type="text"\n\n          [(ngModel)]="username"\n\n          [ngModelOptions]="{standalone:true}"\n\n          placeholder=""\n\n        ></ion-input>\n\n      </ion-item>\n\n    </form>\n\n    <button\n\n      id="loginPage-button1"\n\n      class="login-btn"\n\n      ion-button\n\n      color="positive"\n\n      block\n\n      (click)="login(this.username)"\n\n    >\n\n      Login\n\n    </button>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\login-page\login-page.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_6__providers_PDP_dashboardData__["a" /* DashboardData */], __WEBPACK_IMPORTED_MODULE_5__providers_PDP_bookingData__["a" /* BookingsData */], __WEBPACK_IMPORTED_MODULE_8__providers_PDP_menuData__["a" /* MenusData */], __WEBPACK_IMPORTED_MODULE_4__providers_PDP_profileData__["a" /* ProfileData */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_6__providers_PDP_dashboardData__["a" /* DashboardData */], __WEBPACK_IMPORTED_MODULE_5__providers_PDP_bookingData__["a" /* BookingsData */], __WEBPACK_IMPORTED_MODULE_8__providers_PDP_menuData__["a" /* MenusData */], __WEBPACK_IMPORTED_MODULE_4__providers_PDP_profileData__["a" /* ProfileData */], __WEBPACK_IMPORTED_MODULE_9__providers_Cust_bookingData__["a" /* CustBookData */], __WEBPACK_IMPORTED_MODULE_10__providers_Cust_pastBookingData__["a" /* CustPBookData */]])
     ], LoginPage);
     return LoginPage;
 }());
@@ -152,14 +160,14 @@ var LoginPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 109:
+/***/ 111:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DashboardPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PDP_booking_details_PDP_booking_details__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PDP_booking_details_PDP_booking_details__ = __webpack_require__(112);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(11);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -195,7 +203,7 @@ var DashboardPage = /** @class */ (function () {
     };
     DashboardPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: "page-PDP-dashboard",template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-dashboard\PDP-dashboard.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Upcoming Bookings\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page2">\n\n  <!-- <h2 id="dashboard-heading6" style="color:#000000;">\n\n    Upcoming Bookings\n\n  </h2> -->\n\n  <div class="upcoming-bookings-con">\n\n    <ion-card\n\n      id="dashboard-card24"\n\n      *ngFor="let booking of bookings"\n\n      class="each-booking-con"\n\n    >\n\n      <ion-list>\n\n        <ion-item color="none" id="dashboard-list-item49">\n\n          <ion-avatar item-left>\n\n            <img src="{{ booking?.custImage }}" />\n\n          </ion-avatar>\n\n          <h2 style="margin-bottom:0;font-weight:500;">\n\n            {{ booking?.custName }}\n\n          </h2>\n\n          <ion-icon\n\n            name="arrow-forward"\n\n            item-right\n\n            style="transform: scale(0.8);"\n\n          ></ion-icon>\n\n        </ion-item>\n\n        <ion-item class="item-each" color="none" id="dashboard-list-item52">\n\n          <ion-icon\n\n            class="icons-each"\n\n            name="calendar"\n\n            item-left\n\n            style="color:#929292;font-size:2rem;"\n\n          ></ion-icon>\n\n          <p class="info-text-each">\n\n            {{ booking?.bookDate }} - {{ booking?.bookTime }}\n\n          </p>\n\n        </ion-item>\n\n        <ion-item class="item-each" color="none" id="dashboard-list-item51">\n\n          <ion-icon\n\n            class="icons-each"\n\n            name="people"\n\n            item-left\n\n            style="color:#929292;font-size:2rem;"\n\n          ></ion-icon>\n\n          <p class="info-text-each">{{ booking?.bookPax }}</p>\n\n        </ion-item>\n\n        <ion-item\n\n          class="item-each"\n\n          color="assertive"\n\n          id="dashboard-list-item50"\n\n        >\n\n          <ion-icon\n\n            class="icons-each"\n\n            name="create"\n\n            item-left\n\n            style="color:#929292;font-size:2rem;"\n\n          ></ion-icon>\n\n          <p class="info-text-each">{{ booking?.bookNotes }}</p>\n\n        </ion-item>\n\n        <button\n\n          id="dashboard-button2"\n\n          class="view-details-btn"\n\n          ion-button\n\n          clear\n\n          color="positive"\n\n          block\n\n          style="border-radius:0px 0px 0px 0px;"\n\n          (click)="goToBookingDetails(booking)"\n\n        >\n\n          View Booking Details\n\n        </button>\n\n      </ion-list>\n\n    </ion-card>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-dashboard\PDP-dashboard.html"*/
+            selector: "page-PDP-dashboard",template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-dashboard\PDP-dashboard.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Upcoming Bookings\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page2">\n\n  <!-- <h2 id="dashboard-heading6" style="color:#000000;">\n\n    Upcoming Bookings\n\n  </h2> -->\n\n  <div class="upcoming-bookings-con">\n\n    <ion-card\n\n      id="dashboard-card24"\n\n      *ngFor="let booking of bookings"\n\n      class="each-booking-con"\n\n    >\n\n      <ion-list>\n\n        <ion-item color="none" id="dashboard-list-item49">\n\n          <ion-avatar item-left>\n\n            <img src="{{ booking?.custImage }}" />\n\n          </ion-avatar>\n\n          <h2 style="margin-bottom:0;font-weight:500;">\n\n            {{ booking?.custName }}\n\n          </h2>\n\n          <ion-icon\n\n            name="arrow-forward"\n\n            item-right\n\n            style="transform: scale(0.8);"\n\n          ></ion-icon>\n\n        </ion-item>\n\n        <ion-item class="item-each" color="none" id="dashboard-list-item52">\n\n          <ion-icon\n\n            class="icons-each"\n\n            name="calendar"\n\n            item-left\n\n            style="color:#929292;font-size:2rem;"\n\n          ></ion-icon>\n\n          <p class="info-text-each">\n\n            {{ booking?.bookDate }} - {{ booking?.bookTime }}\n\n          </p>\n\n        </ion-item>\n\n        <ion-item class="item-each" color="none" id="dashboard-list-item51">\n\n          <ion-icon\n\n            class="icons-each"\n\n            name="people"\n\n            item-left\n\n            style="color:#929292;font-size:2rem;"\n\n          ></ion-icon>\n\n          <p class="info-text-each">{{ booking?.bookPax }}</p>\n\n        </ion-item>\n\n        <ion-item\n\n          class="item-each"\n\n          color="assertive"\n\n          id="dashboard-list-item50"\n\n        >\n\n          <ion-icon\n\n            class="icons-each"\n\n            name="create"\n\n            item-left\n\n            style="color:#929292;font-size:2rem;"\n\n          ></ion-icon>\n\n          <p class="info-text-each">{{ booking?.bookNotes }}</p>\n\n        </ion-item>\n\n        <button\n\n          id="dashboard-button2"\n\n          class="view-details-btn"\n\n          ion-button\n\n          clear\n\n          color="positive"\n\n          block\n\n          style="border-radius:0px 0px 0px 0px;"\n\n          (click)="goToBookingDetails(booking)"\n\n        >\n\n          View Booking Details\n\n        </button>\n\n      </ion-list>\n\n    </ion-card>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-dashboard\PDP-dashboard.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
     ], DashboardPage);
@@ -206,7 +214,7 @@ var DashboardPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 110:
+/***/ 112:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -214,10 +222,10 @@ var DashboardPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_PDP_dashboardData__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_PDP_bookingData__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__PDP_bookings_PDP_bookings__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__PDP_dashboard_PDP_dashboard__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_PDP_dashboardData__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_PDP_bookingData__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__PDP_bookings_PDP_bookings__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__PDP_dashboard_PDP_dashboard__ = __webpack_require__(111);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -324,7 +332,7 @@ var BookingDetailsPage = /** @class */ (function () {
     };
     BookingDetailsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-PDP-booking-details',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-booking-details\PDP-booking-details.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Booking Details\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page9">\n\n  <h1 id="bookingDetails-heading1" style="color:#434343;font-size:2rem;">\n\n    {{ booking.bookDate }}\n\n  </h1>\n\n  <h2 id="bookingDetails-heading2" style="color:#434343;font-size:1.8rem;">\n\n    {{ booking.bookTime }}\n\n  </h2>\n\n  <ion-card id="bookingDetails-card21" class="each-detail">\n\n    <ion-list>\n\n      <ion-item color="none" id="bookingDetails-list-item16">\n\n        <ion-avatar item-left>\n\n          <ion-img [src]="booking?.custImage"></ion-img>\n\n        </ion-avatar>\n\n        <h2 style="margin:0;font-weight:500;">\n\n          {{ booking.custName }}\n\n        </h2>\n\n        <ion-icon name="arrow-forward" item-right></ion-icon>\n\n      </ion-item>\n\n      <ion-item class="item-each" color="none" id="bookingDetails-list-item18">\n\n        <ion-icon name="people" item-left></ion-icon>\n\n        {{ booking.bookPax }}\n\n      </ion-item>\n\n      <ion-item\n\n        class="item-each"\n\n        color="assertive"\n\n        id="bookingDetails-list-item19"\n\n      >\n\n        <ion-icon name="create" item-left></ion-icon>\n\n        {{ booking.bookNotes }}\n\n      </ion-item>\n\n      <ion-item\n\n        class="item-each"\n\n        color="assertive"\n\n        id="bookingDetails-list-item19"\n\n      >\n\n        <ion-icon name="information-circle" item-left></ion-icon>\n\n        {{ booking.bookStatus }}\n\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n  <button\n\n    id="bookingDetails-button1"\n\n    ion-button\n\n    color="danger"\n\n    block\n\n    *ngIf="bookingStatus()"\n\n    (click)="presentConfirm()"\n\n    class="cancel-booking-btn"\n\n  >\n\n    Cancel Booking\n\n  </button>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-booking-details\PDP-booking-details.html"*/
+            selector: 'page-PDP-booking-details',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-booking-details\PDP-booking-details.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Booking Details\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page9">\n\n  <h1 id="bookingDetails-heading1" style="color:#434343;font-size:2rem;">\n\n    {{ booking.bookDate }}\n\n  </h1>\n\n  <h2 id="bookingDetails-heading2" style="color:#434343;font-size:1.8rem;">\n\n    {{ booking.bookTime }}\n\n  </h2>\n\n  <ion-card id="bookingDetails-card21" class="each-detail">\n\n    <ion-list>\n\n      <ion-item color="none" id="bookingDetails-list-item16">\n\n        <ion-avatar item-left>\n\n          <ion-img [src]="booking?.custImage"></ion-img>\n\n        </ion-avatar>\n\n        <h2 style="margin:0;font-weight:500;">\n\n          {{ booking.custName }}\n\n        </h2>\n\n        <ion-icon name="arrow-forward" item-right></ion-icon>\n\n      </ion-item>\n\n      <ion-item class="item-each" color="none" id="bookingDetails-list-item18">\n\n        <ion-icon name="people" item-left></ion-icon>\n\n        {{ booking.bookPax }}\n\n      </ion-item>\n\n      <ion-item\n\n        class="item-each"\n\n        color="assertive"\n\n        id="bookingDetails-list-item19"\n\n      >\n\n        <ion-icon name="create" item-left></ion-icon>\n\n        {{ booking.bookNotes }}\n\n      </ion-item>\n\n      <ion-item\n\n        class="item-each"\n\n        color="assertive"\n\n        id="bookingDetails-list-item19"\n\n      >\n\n        <ion-icon name="information-circle" item-left></ion-icon>\n\n        {{ booking.bookStatus }}\n\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n  <button\n\n    id="bookingDetails-button1"\n\n    ion-button\n\n    color="danger"\n\n    block\n\n    *ngIf="bookingStatus()"\n\n    (click)="presentConfirm()"\n\n    class="cancel-booking-btn"\n\n  >\n\n    Cancel Booking\n\n  </button>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-booking-details\PDP-booking-details.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_3__providers_PDP_dashboardData__["a" /* DashboardData */], __WEBPACK_IMPORTED_MODULE_4__providers_PDP_bookingData__["a" /* BookingsData */]])
     ], BookingDetailsPage);
@@ -335,7 +343,7 @@ var BookingDetailsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 111:
+/***/ 113:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -387,7 +395,7 @@ var DashboardData = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 112:
+/***/ 114:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -439,14 +447,14 @@ var BookingsData = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 113:
+/***/ 115:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BookingsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PDP_booking_details_PDP_booking_details__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PDP_booking_details_PDP_booking_details__ = __webpack_require__(112);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(11);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -496,7 +504,7 @@ var BookingsPage = /** @class */ (function () {
     };
     BookingsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-PDP-bookings',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-bookings\PDP-bookings.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Bookings\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page3">\n\n  <form id="bookings-form1">\n\n    <ion-item id="bookings-select2">\n\n      <ion-label>\n\n        Filter\n\n      </ion-label>\n\n      <ion-select [(ngModel)]="default.option" [ngModelOptions]="{standalone: true}" (ionChange)="bookingsFilter($event)">\n\n        <ion-option value="none">\n\n          None\n\n        </ion-option>\n\n        <ion-option value="ongoing">\n\n          Ongoing\n\n        </ion-option>\n\n        <ion-option value="completed">\n\n          Completed\n\n        </ion-option>\n\n        <ion-option value="cancelled">\n\n          Cancelled\n\n        </ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n  </form>\n\n  <ion-list id="bookings-list2">\n\n    <ion-item color="none" id="bookings-list-item11" *ngFor="let booking of filterBookings" (click)="goToBookingDetails(booking)">\n\n    {{ booking?.bookDate }} - {{ booking?.bookTime }}\n\n    <ion-icon name="arrow-forward" item-right></ion-icon>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-bookings\PDP-bookings.html"*/
+            selector: 'page-PDP-bookings',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-bookings\PDP-bookings.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Bookings\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page3">\n\n  <form id="bookings-form1">\n\n    <ion-item id="bookings-select2">\n\n      <ion-label>\n\n        Filter\n\n      </ion-label>\n\n      <ion-select [(ngModel)]="default.option" [ngModelOptions]="{standalone: true}" (ionChange)="bookingsFilter($event)">\n\n        <ion-option value="none">\n\n          None\n\n        </ion-option>\n\n        <ion-option value="ongoing">\n\n          Ongoing\n\n        </ion-option>\n\n        <ion-option value="completed">\n\n          Completed\n\n        </ion-option>\n\n        <ion-option value="cancelled">\n\n          Cancelled\n\n        </ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n  </form>\n\n  <ion-list id="bookings-list2">\n\n    <ion-item color="none" id="bookings-list-item11" *ngFor="let booking of filterBookings" (click)="goToBookingDetails(booking)">\n\n    {{ booking?.bookDate }} - {{ booking?.bookTime }}\n\n    <ion-icon name="arrow-forward" item-right></ion-icon>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-bookings\PDP-bookings.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
     ], BookingsPage);
@@ -507,7 +515,7 @@ var BookingsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 114:
+/***/ 116:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -516,7 +524,7 @@ var BookingsPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PDP_edit_profile_PDP_edit_profile__ = __webpack_require__(227);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_page_login_page__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_page_login_page__ = __webpack_require__(110);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -592,7 +600,7 @@ var ProfilePage = /** @class */ (function () {
     };
     ProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-PDP-profile',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-profile\PDP-profile.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-buttons start>\n\n      <button ion-button icon-left solid (click)="presentConfirm()">\n\n        <ion-icon name="exit"></ion-icon>\n\n        Log out\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-title>\n\n      Profile\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page5">\n\n  <img src="{{ profile?.image }}" />\n\n  <h1 id="profile-heading10" style="color:#000000;">\n\n  {{ profile?.fName }}\n\n  </h1>\n\n  <div id="profile-markdown19">\n\n    <h5>Description</h5>\n\n    {{ profile?.desc }}\n\n    <h5>Location</h5>\n\n    {{ profile?.add }}\n\n    <h5>Mobile</h5>\n\n    {{ profile?.phone }}\n\n    <h5>Email</h5>\n\n    {{ profile?.email }}\n\n  </div>\n\n  <button id="profile-button10" ion-button color="positive" block on-click="goToEditProfile(profile)">\n\n    Edit Profile\n\n  </button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-profile\PDP-profile.html"*/
+            selector: 'page-PDP-profile',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-profile\PDP-profile.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-buttons start>\n\n      <button ion-button icon-left solid (click)="presentConfirm()">\n\n        <ion-icon name="exit"></ion-icon>\n\n        Log out\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-title>\n\n      Profile\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page5">\n\n  <img src="{{ profile?.image }}" />\n\n  <h1 id="profile-heading10" style="color:#000000;">\n\n  {{ profile?.fName }}\n\n  </h1>\n\n  <div id="profile-markdown19">\n\n    <h5>Description</h5>\n\n    {{ profile?.desc }}\n\n    <h5>Location</h5>\n\n    {{ profile?.add }}\n\n    <h5>Mobile</h5>\n\n    {{ profile?.phone }}\n\n    <h5>Email</h5>\n\n    {{ profile?.email }}\n\n  </div>\n\n  <button id="profile-button10" ion-button color="positive" block on-click="goToEditProfile(profile)">\n\n    Edit Profile\n\n  </button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-profile\PDP-profile.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], ProfilePage);
@@ -603,7 +611,7 @@ var ProfilePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 115:
+/***/ 117:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -655,7 +663,7 @@ var ProfileData = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 116:
+/***/ 118:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -663,8 +671,8 @@ var ProfileData = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_make_booking_make_booking__ = __webpack_require__(230);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_CUST_submitReview_submitReview__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_CUST_reviews_reviews__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_CUST_submitReview_submitReview__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_CUST_reviews_reviews__ = __webpack_require__(120);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common_http__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jquery__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_jquery__);
@@ -876,9 +884,11 @@ var MenuDetailsPage = /** @class */ (function () {
         this.http.post(url, postData, httpOptions).subscribe(function (data) {
             if (data == false) {
                 _this.hvInfo = true;
+                _this.hvInfo1 = false;
             }
             else {
                 _this.hvInfo = false;
+                _this.hvInfo1 = true;
                 _this.TopReview = data;
                 for (var i = 0; i < _this.TopReview.length; i++) {
                     if (_this.TopReview[i].cleanlinessRating == 1) {
@@ -915,7 +925,7 @@ var MenuDetailsPage = /** @class */ (function () {
     };
     MenuDetailsPage = MenuDetailsPage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: "page-menu-details",template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\menu-details\menu-details.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      {{this.details.fName}}\n\n    </ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="favmenu()">\n\n        <ion-icon\n\n          [name]="visible ? \'heart\' : \'heart-outline\'"\n\n          color="danger"\n\n        ></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content id="page6" (window:resize)="onResize($event)">\n\n  <div class="details-image">\n\n    <img src="{{this.details.menu_image}}" alt="" />\n\n  </div>\n\n  <div padding>\n\n    <h4\n\n      id="menuDetails-heading3"\n\n      style="color:#232323;font-weight:600;margin-bottom:5px;"\n\n    >\n\n      {{this.details.menuName}}\n\n    </h4>\n\n    <div style="margin-bottom:15px;color:#232323;">\n\n      {{this.details.description}}\n\n    </div>\n\n    <div class="details-info-list">\n\n      <div\n\n        id="menuDetails-markdown5"\n\n        class="show-list-numbers-and-dots details-info-each"\n\n      >\n\n        <ion-icon name="pin"></ion-icon>\n\n        <p ion-text>{{this.details.location}}</p>\n\n      </div>\n\n      <div\n\n        id="menuDetails-markdown6"\n\n        class="show-list-numbers-and-dots details-info-each"\n\n      >\n\n        <ion-icon name="pricetag"></ion-icon>\n\n        <p ion-text>{{this.details.menu_category}}</p>\n\n      </div>\n\n      <div\n\n        id="menuDetails-markdown6"\n\n        class="show-list-numbers-and-dots details-info-each"\n\n      >\n\n        <ion-icon name="list-box"></ion-icon>\n\n        <p ion-text>~${{this.details.menu_price}}/pax</p>\n\n      </div>\n\n      <div\n\n        id="menuDetails-markdown6"\n\n        class="show-list-numbers-and-dots details-info-each"\n\n      >\n\n        <ion-icon name="call"></ion-icon>\n\n        <a href="tel:{{this.details.phone}}">{{this.details.phone}}</a>\n\n      </div>\n\n    </div>\n\n    <h5 id="menuDetails-heading4" style="color:#000000;font-size:1.6rem;">\n\n      Menu\n\n    </h5>\n\n    <ion-list id="menuDetails-list1" class="menu-list">\n\n      <ion-item\n\n        color="none"\n\n        id="menuDetails-list-item8"\n\n        class="menu-item-each active"\n\n        *ngFor="let item of menuList"\n\n      >\n\n        <img src="{{item.menuImg}}" alt="" (click)="popupImage($event)" />\n\n        <p ion-text color="black">{{item.menuItem}}</p>\n\n      </ion-item>\n\n    </ion-list>\n\n    <div class="reviews-con">\n\n      <div class="reviews-header">\n\n        <h5\n\n          id="menuDetails-heading5"\n\n          style="color:#000000;font-size:1.6rem;"\n\n          class="reviews-header-text"\n\n        >\n\n          Reviews\n\n        </h5>\n\n        <button class="wholebutton" (click)="navSubmitReview()">\n\n          Write a Review\n\n        </button>\n\n      </div>\n\n      <div class="reviews-cards-con">\n\n        <ion-card\n\n          *ngFor="let rev of TopReview"\n\n          [hidden]="hvInfo"\n\n          class="reviews-each"\n\n        >\n\n          <ion-grid>\n\n            <ion-row>\n\n              <ion-col col-12>\n\n                <ion-avatar style="width:90px;height:90px;margin:0 auto;">\n\n                  <img src="{{rev.cleanlinessRating}}" />\n\n                </ion-avatar>\n\n              </ion-col>\n\n            </ion-row>\n\n            <ion-row>\n\n              <ion-col col-12 text-center style="margin-top:-15px;">\n\n                <ionic3-star-rating\n\n                  rating="{{rev.rating}}"\n\n                  halfStar="false"\n\n                  activeIcon="ios-star"\n\n                  defaultIcon="ios-star-outline"\n\n                  activeColor="#FFC300"\n\n                  defaultColor="#aaaaaa"\n\n                  readonly="true"\n\n                  fontSize="28px"\n\n                >\n\n                </ionic3-star-rating>\n\n              </ion-col>\n\n            </ion-row>\n\n            <ion-row>\n\n              <ion-col col-12>\n\n                {{rev.comments}}\n\n              </ion-col>\n\n            </ion-row>\n\n            <ion-row style="margin-top:10px;">\n\n              <ion-col col-6 text-left style="color:grey">\n\n                <ion-icon name="calendar"></ion-icon> {{rev.datein | date: "dd\n\n                MMM yyyy" }}\n\n              </ion-col>\n\n              <ion-col col-6 text-right>\n\n                <b style="font-style:italic;">-{{rev.custName}}</b>\n\n              </ion-col>\n\n            </ion-row>\n\n          </ion-grid>\n\n        </ion-card>\n\n      </div>\n\n      <button class="wholebutton right" (click)="allReviews()">\n\n        See all Reviews\n\n      </button>\n\n    </div>\n\n    <div class="related-con">\n\n      <h5 id="menuDetails-heading4" style="color:#000000;font-size:1.6rem;">\n\n        More like <span class="color-darkyellow">{{this.details.fName}}</span>\n\n      </h5>\n\n      <div class="related-inner">\n\n        <ion-card\n\n          *ngFor="let profile of profileList; let i = index;"\n\n          class="related-each"\n\n        >\n\n          <ion-list>\n\n            <ion-item\n\n              color="none"\n\n              id="discover-list-item3"\n\n              (click)="goToMenuDetailsPage($event, profile)"\n\n            >\n\n              <ion-avatar item-left>\n\n                <img src="{{profile.img}}" />\n\n              </ion-avatar>\n\n              <h2 style="margin-bottom:0;font-weight:500;color:#424242;">\n\n                {{profile.fName}}\n\n              </h2>\n\n            </ion-item>\n\n            <div class="discover-image">\n\n              <img src="{{profile.menu_image}}" alt="" />\n\n            </div>\n\n            <div class="discover-info">\n\n              <h5\n\n                id="discover-heading2"\n\n                class="discover-menuname"\n\n                style="color:#424242;font-weight:600;font-size:1.4rem;"\n\n                (click)="goToMenuDetailsPage($event, profile)"\n\n              >\n\n                {{profile.menuName}}\n\n              </h5>\n\n              <div\n\n                class="show-list-numbers-and-dots"\n\n                style="display:flex;align-items:center;margin-bottom:5px;"\n\n              >\n\n                <ion-icon\n\n                  name="list-box"\n\n                  style="color:#929292;width:15px;text-align:center;"\n\n                ></ion-icon>\n\n                <p\n\n                  style="color:#000000;margin-left:7px;margin-bottom:0;font-size:1.3rem;"\n\n                >\n\n                  ~${{profile.menu_price}}/pax\n\n                </p>\n\n              </div>\n\n              <div\n\n                id="discover-markdown3"\n\n                class="show-list-numbers-and-dots"\n\n                style="display:flex;align-items:center;margin-bottom:5px;"\n\n              >\n\n                <ion-icon\n\n                  name="pin"\n\n                  style="color:#929292;width:15px;text-align:center;"\n\n                ></ion-icon>\n\n                <p\n\n                  style="color:#000000;margin-left:7px;margin-bottom:0;font-size:1.3rem;"\n\n                >\n\n                  {{profile.location}}\n\n                </p>\n\n              </div>\n\n              <div\n\n                id="discover-markdown4"\n\n                class="show-list-numbers-and-dots"\n\n                style="display:flex;align-items:center;margin-bottom:5px;"\n\n              >\n\n                <ion-icon\n\n                  name="pricetag"\n\n                  style="color:#929292;width:15px;text-align:center;"\n\n                ></ion-icon>\n\n                <p\n\n                  style="color:#000000;margin-left:7px;margin-bottom:0;font-size:1.3rem;"\n\n                >\n\n                  {{profile.menu_category}}\n\n                </p>\n\n              </div>\n\n            </div>\n\n          </ion-list>\n\n        </ion-card>\n\n      </div>\n\n    </div>\n\n  </div>\n\n</ion-content>\n\n<ion-item\n\n  class="popup-image"\n\n  (click)="popupImage()"\n\n  [class.active]="this.showImage"\n\n>\n\n  <img src="{{this.popupSrc}}" alt="" />\n\n</ion-item>\n\n<div class="book-cta">\n\n  <button\n\n    class="book-cta-btn"\n\n    (click)="goToMakeBookingPage($event, this.details)"\n\n  >\n\n    Book Now\n\n  </button>\n\n</div>\n\n'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\menu-details\menu-details.html"*/
+            selector: "page-menu-details",template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\menu-details\menu-details.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      {{this.details.fName}}\n\n    </ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="favmenu()">\n\n        <ion-icon\n\n          [name]="visible ? \'heart\' : \'heart-outline\'"\n\n          color="danger"\n\n        ></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content id="page6" (window:resize)="onResize($event)">\n\n  <div class="details-image">\n\n    <img src="{{this.details.menu_image}}" alt="" />\n\n  </div>\n\n  <div padding>\n\n    <h4\n\n      id="menuDetails-heading3"\n\n      style="color:#232323;font-weight:600;margin-bottom:5px;"\n\n    >\n\n      {{this.details.menuName}}\n\n    </h4>\n\n    <div style="margin-bottom:15px;color:#232323;">\n\n      {{this.details.description}}\n\n    </div>\n\n    <div class="details-info-list">\n\n      <div\n\n        id="menuDetails-markdown5"\n\n        class="show-list-numbers-and-dots details-info-each"\n\n      >\n\n        <ion-icon name="pin"></ion-icon>\n\n        <p ion-text>{{this.details.location}}</p>\n\n      </div>\n\n      <div\n\n        id="menuDetails-markdown6"\n\n        class="show-list-numbers-and-dots details-info-each"\n\n      >\n\n        <ion-icon name="pricetag"></ion-icon>\n\n        <p ion-text>{{this.details.menu_category}}</p>\n\n      </div>\n\n      <div\n\n        id="menuDetails-markdown6"\n\n        class="show-list-numbers-and-dots details-info-each"\n\n      >\n\n        <ion-icon name="list-box"></ion-icon>\n\n        <p ion-text>~${{this.details.menu_price}}/pax</p>\n\n      </div>\n\n      <div\n\n        id="menuDetails-markdown6"\n\n        class="show-list-numbers-and-dots details-info-each"\n\n      >\n\n        <ion-icon name="call"></ion-icon>\n\n        <a href="tel:{{this.details.phone}}">{{this.details.phone}}</a>\n\n      </div>\n\n    </div>\n\n    <h5 id="menuDetails-heading4" style="color:#000000;font-size:1.6rem;">\n\n      Menu\n\n    </h5>\n\n    <ion-list id="menuDetails-list1" class="menu-list">\n\n      <ion-item\n\n        color="none"\n\n        id="menuDetails-list-item8"\n\n        class="menu-item-each active"\n\n        *ngFor="let item of menuList"\n\n      >\n\n        <img src="{{item.menuImg}}" alt="" (click)="popupImage($event)" />\n\n        <p ion-text color="black">{{item.menuItem}}</p>\n\n      </ion-item>\n\n    </ion-list>\n\n    <div class="reviews-con">\n\n      <div class="reviews-header">\n\n        <h5\n\n          id="menuDetails-heading5"\n\n          style="color:#000000;font-size:1.6rem;"\n\n          class="reviews-header-text"\n\n        >\n\n          Reviews\n\n        </h5>\n\n        <button class="wholebutton" (click)="navSubmitReview()">\n\n          Write a Review\n\n        </button>\n\n      </div>\n\n      <div class="reviews-cards-con">\n\n        <ion-card\n\n          *ngFor="let rev of TopReview"\n\n          [hidden]="hvInfo"\n\n          class="reviews-each"\n\n        >\n\n          <ion-grid>\n\n            <ion-row>\n\n              <ion-col col-12>\n\n                <ion-avatar style="width:90px;height:90px;margin:0 auto;">\n\n                  <img src="{{rev.cleanlinessRating}}" />\n\n                </ion-avatar>\n\n              </ion-col>\n\n            </ion-row>\n\n            <ion-row>\n\n              <ion-col col-12 text-center style="margin-top:-15px;">\n\n                <ionic3-star-rating\n\n                  rating="{{rev.rating}}"\n\n                  halfStar="false"\n\n                  activeIcon="ios-star"\n\n                  defaultIcon="ios-star-outline"\n\n                  activeColor="#FFC300"\n\n                  defaultColor="#aaaaaa"\n\n                  readonly="true"\n\n                  fontSize="28px"\n\n                >\n\n                </ionic3-star-rating>\n\n              </ion-col>\n\n            </ion-row>\n\n            <ion-row>\n\n              <ion-col col-12>\n\n                {{rev.comments}}\n\n              </ion-col>\n\n            </ion-row>\n\n            <ion-row style="margin-top:10px;">\n\n              <ion-col col-6 text-left style="color:grey">\n\n                <ion-icon name="calendar"></ion-icon> {{rev.datein | date: "dd\n\n                MMM yyyy" }}\n\n              </ion-col>\n\n              <ion-col col-6 text-right>\n\n                <b style="font-style:italic;">-{{rev.custName}}</b>\n\n              </ion-col>\n\n            </ion-row>\n\n          </ion-grid>\n\n        </ion-card>\n\n      </div>\n\n      <button class="wholebutton right" (click)="allReviews()" [hidden]="hvInfo">\n\n        See all Reviews\n\n      </button>\n\n    </div>\n\n    <div text-center [hidden]="hvInfo1" style="margin-top:-47px">\n\n    <h4>No Reviews yet</h4>\n\n    </div>\n\n    <div class="related-con">\n\n      <h5 id="menuDetails-heading4" style="color:#000000;font-size:1.6rem;">\n\n        More like <span class="color-darkyellow">{{this.details.fName}}</span>\n\n      </h5>\n\n      <div class="related-inner">\n\n        <ion-card\n\n          *ngFor="let profile of profileList; let i = index;"\n\n          class="related-each"\n\n        >\n\n          <ion-list>\n\n            <ion-item\n\n              color="none"\n\n              id="discover-list-item3"\n\n              (click)="goToMenuDetailsPage($event, profile)"\n\n            >\n\n              <ion-avatar item-left>\n\n                <img src="{{profile.img}}" />\n\n              </ion-avatar>\n\n              <h2 style="margin-bottom:0;font-weight:500;color:#424242;">\n\n                {{profile.fName}}\n\n              </h2>\n\n            </ion-item>\n\n            <div class="discover-image">\n\n              <img src="{{profile.menu_image}}" alt="" />\n\n            </div>\n\n            <div class="discover-info">\n\n              <h5\n\n                id="discover-heading2"\n\n                class="discover-menuname"\n\n                style="color:#424242;font-weight:600;font-size:1.4rem;"\n\n                (click)="goToMenuDetailsPage($event, profile)"\n\n              >\n\n                {{profile.menuName}}\n\n              </h5>\n\n              <div\n\n                class="show-list-numbers-and-dots"\n\n                style="display:flex;align-items:center;margin-bottom:5px;"\n\n              >\n\n                <ion-icon\n\n                  name="list-box"\n\n                  style="color:#929292;width:15px;text-align:center;"\n\n                ></ion-icon>\n\n                <p\n\n                  style="color:#000000;margin-left:7px;margin-bottom:0;font-size:1.3rem;"\n\n                >\n\n                  ~${{profile.menu_price}}/pax\n\n                </p>\n\n              </div>\n\n              <div\n\n                id="discover-markdown3"\n\n                class="show-list-numbers-and-dots"\n\n                style="display:flex;align-items:center;margin-bottom:5px;"\n\n              >\n\n                <ion-icon\n\n                  name="pin"\n\n                  style="color:#929292;width:15px;text-align:center;"\n\n                ></ion-icon>\n\n                <p\n\n                  style="color:#000000;margin-left:7px;margin-bottom:0;font-size:1.3rem;"\n\n                >\n\n                  {{profile.location}}\n\n                </p>\n\n              </div>\n\n              <div\n\n                id="discover-markdown4"\n\n                class="show-list-numbers-and-dots"\n\n                style="display:flex;align-items:center;margin-bottom:5px;"\n\n              >\n\n                <ion-icon\n\n                  name="pricetag"\n\n                  style="color:#929292;width:15px;text-align:center;"\n\n                ></ion-icon>\n\n                <p\n\n                  style="color:#000000;margin-left:7px;margin-bottom:0;font-size:1.3rem;"\n\n                >\n\n                  {{profile.menu_category}}\n\n                </p>\n\n              </div>\n\n            </div>\n\n          </ion-list>\n\n        </ion-card>\n\n      </div>\n\n    </div>\n\n  </div>\n\n</ion-content>\n\n<ion-item\n\n  class="popup-image"\n\n  (click)="popupImage()"\n\n  [class.active]="this.showImage"\n\n>\n\n  <img src="{{this.popupSrc}}" alt="" />\n\n</ion-item>\n\n<div class="book-cta">\n\n  <button\n\n    class="book-cta-btn"\n\n    (click)="goToMakeBookingPage($event, this.details)"\n\n  >\n\n    Book Now\n\n  </button>\n\n</div>\n\n'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\menu-details\menu-details.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -929,7 +939,7 @@ var MenuDetailsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 117:
+/***/ 119:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1048,7 +1058,7 @@ var CustSubmitReviewPage = /** @class */ (function () {
     };
     CustSubmitReviewPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-submitReview',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\CUST-submitReview\submitReview.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      <label>Rate {{menuTitle.menuName}} </label>\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page5" class="body">\n\n    <ion-label text-center class="text">Rate my Service</ion-label>\n\n    <div>\n\n      <ion-grid>\n\n        <ion-col col-12>\n\n          <ionic3-star-rating [(ngModel)]="rating" class="center" activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#FFC300"\n\n          defaultColor="#aaaaaa" readonly="false" rating="0" fontSize="40px" (ratingChanged)="logRatingChange($event)"> \n\n        </ionic3-star-rating>\n\n        </ion-col>\n\n      </ion-grid>\n\n\n\n    </div>\n\n    <!-- <ion-label text-center class="text">Food Quality</ion-label> -->\n\n      <!-- <ionic3-star-rating [(ngModel)]="rating2" class="center" activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#F2F92F"\n\n        defaultColor="#aaaaaa" readonly="false" rating="0" fontSize="32px">\n\n      </ionic3-star-rating> -->\n\n      <div text-center>\n\n        <ion-label text-center class="text1">Category</ion-label>\n\n        <div style="width:30%;display:inline-block;">\n\n        <label>\n\n          <input type="radio" name="point" (click)="hitme(\'hygenie\')">\n\n          <img src="../../assets/icon/broom.png">       \n\n        </label>\n\n        <p class="p-text" text-center>Hygiene</p>\n\n      </div>\n\n      <div style="width:30%;display:inline-block;">\n\n        <label>\n\n        <input type="radio" name="point" (click)="hitme(\'food\')">\n\n        <img src="../../assets/icon/food.png">\n\n      </label>\n\n      <p class="p-text" text-center>Food</p>\n\n    </div>\n\n    <div style="width:30%;display:inline-block;">\n\n      <label>\n\n        <input type="radio" name="point" (click)="hitme(\'money\')">\n\n        <img src="../../assets/icon/money.png">\n\n      </label>\n\n      <p class="p-text" text-center>Price</p>\n\n    </div>\n\n    </div>\n\n      <!-- <div text-center class="upup">\n\n        <ion-label text-center class="text">My Strongest point</ion-label>\n\n        <label>\n\n          <input type="radio" name="point" (click)="hitme(\'hygenie\')">\n\n          <img class="btn-img" src="../../assets/icon/broom.png">\n\n          <p style="display:none;">aaa</p>         \n\n        </label>\n\n        <label>\n\n        <input type="radio" name="point" (click)="hitme(\'food\')">\n\n        <img class="btn-img" src="../../assets/icon/food.png">\n\n      </label>\n\n      <label>\n\n        <input type="radio" name="point" (click)="hitme(\'money\')">\n\n        <img class="btn-img" src="../../assets/icon/money.png">\n\n      </label>\n\n    </div> -->\n\n    <!-- <ion-label text-center class="text">Price</ion-label>\n\n    <ion-item class="no-border ">\n\n      <ionic3-star-rating [(ngModel)]="rating3" class="center" activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#F2F92F"\n\n        defaultColor="#aaaaaa" readonly="false" rating="0" fontSize="32px">\n\n      </ionic3-star-rating>\n\n    </ion-item> -->\n\n\n\n    <ion-item class="border-text">\n\n      <ion-textarea [(ngModel)]="myText" [maxlength]="100" autoGrow="true" placeholder="Describe your experience (optional)"></ion-textarea>\n\n    </ion-item>\n\n      <ion-label class="right">Characters Remaining: {{myText?.length || 0}}/100</ion-label>\n\n    <button class="center" ion-button [disabled]="isValid" color="positive" (click)="submitReview()">Submit Review</button>\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\CUST-submitReview\submitReview.html"*/
+            selector: 'page-submitReview',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\CUST-submitReview\submitReview.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      <label>Rate {{menuTitle.menuName}} </label>\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page5" class="body">\n\n    <ion-label text-center class="text">Rate my Service</ion-label>\n\n    <div>\n\n      <ion-grid>\n\n        <ion-col col-12>\n\n          <ionic3-star-rating [(ngModel)]="rating" class="center" activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#FFC300"\n\n          defaultColor="#aaaaaa" readonly="false" rating="0" fontSize="40px" (ratingChanged)="logRatingChange($event)"> \n\n        </ionic3-star-rating>\n\n        </ion-col>\n\n      </ion-grid>\n\n\n\n    </div>\n\n    <!-- <ion-label text-center class="text">Food Quality</ion-label> -->\n\n      <!-- <ionic3-star-rating [(ngModel)]="rating2" class="center" activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#F2F92F"\n\n        defaultColor="#aaaaaa" readonly="false" rating="0" fontSize="32px">\n\n      </ionic3-star-rating> -->\n\n      <div text-center>\n\n        <ion-label text-center class="text1">Category</ion-label>\n\n        <div style="width:30%;display:inline-block;">\n\n        <label>\n\n          <input type="radio" name="point" (click)="hitme(\'hygenie\')">\n\n          <img src="../../assets/icon/broom.png">       \n\n        </label>\n\n        <p class="p-text" text-center>Hygiene</p>\n\n      </div>\n\n      <div style="width:30%;display:inline-block;">\n\n        <label>\n\n        <input type="radio" name="point" (click)="hitme(\'food\')">\n\n        <img src="../../assets/icon/food.png">\n\n      </label>\n\n      <p class="p-text" text-center>Food</p>\n\n    </div>\n\n    <div style="width:30%;display:inline-block;">\n\n      <label>\n\n        <input type="radio" name="point" (click)="hitme(\'money\')">\n\n        <img src="../../assets/icon/money.png">\n\n      </label>\n\n      <p class="p-text" text-center>Price</p>\n\n    </div>\n\n    </div>\n\n      <!-- <div text-center class="upup">\n\n        <ion-label text-center class="text">My Strongest point</ion-label>\n\n        <label>\n\n          <input type="radio" name="point" (click)="hitme(\'hygenie\')">\n\n          <img class="btn-img" src="../../assets/icon/broom.png">\n\n          <p style="display:none;">aaa</p>         \n\n        </label>\n\n        <label>\n\n        <input type="radio" name="point" (click)="hitme(\'food\')">\n\n        <img class="btn-img" src="../../assets/icon/food.png">\n\n      </label>\n\n      <label>\n\n        <input type="radio" name="point" (click)="hitme(\'money\')">\n\n        <img class="btn-img" src="../../assets/icon/money.png">\n\n      </label>\n\n    </div> -->\n\n    <!-- <ion-label text-center class="text">Price</ion-label>\n\n    <ion-item class="no-border ">\n\n      <ionic3-star-rating [(ngModel)]="rating3" class="center" activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#F2F92F"\n\n        defaultColor="#aaaaaa" readonly="false" rating="0" fontSize="32px">\n\n      </ionic3-star-rating>\n\n    </ion-item> -->\n\n\n\n    <ion-item class="border-text">\n\n      <ion-textarea [(ngModel)]="myText" [maxlength]="100" autoGrow="true" placeholder="Describe your experience (optional)"></ion-textarea>\n\n    </ion-item>\n\n      <ion-label class="right">Characters Remaining: {{myText?.length || 0}}/100</ion-label>\n\n    <button class="center" ion-button [disabled]="isValid" color="positive" (click)="submitReview()">Submit Review</button>\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\CUST-submitReview\submitReview.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3__angular_common__["e" /* Location */], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */]])
     ], CustSubmitReviewPage);
@@ -1059,7 +1069,7 @@ var CustSubmitReviewPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 118:
+/***/ 120:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1134,7 +1144,7 @@ var CustReviewsPage = /** @class */ (function () {
     };
     CustReviewsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-reviews',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\CUST-reviews\reviews.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Reviews\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page6">\n\n  <ion-card *ngFor="let rev of allReview">\n\n    <ion-grid>\n\n      <ion-row>\n\n        <ion-col col-12 >\n\n          <ion-avatar style="width:90px;height:90px;margin:0 auto;">\n\n            <img src="{{rev.cleanlinessRating}}">\n\n          </ion-avatar>\n\n        </ion-col>\n\n      </ion-row>\n\n      <ion-row >\n\n        <ion-col col-12 text-center style="margin-top:-15px;">         \n\n            <ionic3-star-rating rating="{{rev.rating}}" halfStar="false" activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#FFC300"\n\n            defaultColor="#aaaaaa" readonly="true" fontSize="28px" (ratingChanged)="logRatingChange($event)">\n\n          </ionic3-star-rating>\n\n        </ion-col>\n\n      </ion-row>\n\n      <ion-row>\n\n        <ion-col col-12> \n\n          {{rev.comments}}\n\n        </ion-col>\n\n      </ion-row>\n\n      <ion-row style="margin-top:10px;">\n\n        <ion-col col-6 text-left style="color:grey">\n\n          <ion-icon name="calendar"></ion-icon>   {{rev.datein | date: "dd MMM yyyy" }}\n\n        </ion-col>\n\n        <ion-col col-6 text-right>\n\n    <b style="font-style:italic;">-{{rev.custName}}</b>\n\n        </ion-col>\n\n      </ion-row>\n\n    </ion-grid>\n\n  </ion-card>\n\n</ion-content>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\CUST-reviews\reviews.html"*/
+            selector: 'page-reviews',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\CUST-reviews\reviews.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Reviews\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page6">\n\n  <ion-card *ngFor="let rev of allReview">\n\n    <ion-grid>\n\n      <ion-row>\n\n        <ion-col col-12 >\n\n          <ion-avatar style="width:90px;height:90px;margin:0 auto;">\n\n            <img src="{{rev.cleanlinessRating}}">\n\n          </ion-avatar>\n\n        </ion-col>\n\n      </ion-row>\n\n      <ion-row >\n\n        <ion-col col-12 text-center style="margin-top:-15px;">         \n\n            <ionic3-star-rating rating="{{rev.rating}}" halfStar="false" activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#FFC300"\n\n            defaultColor="#aaaaaa" readonly="true" fontSize="28px" (ratingChanged)="logRatingChange($event)">\n\n          </ionic3-star-rating>\n\n        </ion-col>\n\n      </ion-row>\n\n      <ion-row>\n\n        <ion-col col-12> \n\n          {{rev.comments}}\n\n        </ion-col>\n\n      </ion-row>\n\n      <ion-row style="margin-top:10px;">\n\n        <ion-col col-6 text-left style="color:grey">\n\n          <ion-icon name="calendar"></ion-icon>   {{rev.datein | date: "dd MMM yyyy" }}\n\n        </ion-col>\n\n        <ion-col col-6 text-right>\n\n    <b style="font-style:italic;">-{{rev.custName}}</b>\n\n        </ion-col>\n\n      </ion-row>\n\n    </ion-grid>\n\n  </ion-card>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\CUST-reviews\reviews.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]])
     ], CustReviewsPage);
@@ -1145,7 +1155,7 @@ var CustReviewsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 119:
+/***/ 121:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1153,8 +1163,8 @@ var CustReviewsPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CUST_reviews_reviews__ = __webpack_require__(118);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__CUST_submitReview_submitReview__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CUST_reviews_reviews__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__CUST_submitReview_submitReview__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(11);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1372,7 +1382,7 @@ var CustMenuInfoPage = /** @class */ (function () {
     };
     CustMenuInfoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-menuinfo',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\CUST-menuinfo\menuinfo.html"*/'<ion-header>\n\n  \n\n  <ion-toolbar>\n\n    <ion-title text-center>\n\n      {{data1}} Details\n\n    </ion-title>\n\n    <!-- <ion-buttons slot="end" >\n\n      <button [ngStyle]="" class="heartbutton" (click)="favmenu(friend)">\n\n      <ion-icon size="large" [name]="visible ? \'heart\' : \'heart-empty\'"></ion-icon>\n\n    </button>\n\n    </ion-buttons> -->\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="favmenu()">\n\n        <ion-icon [name]="visible ? \'heart\' : \'heart-outline\'"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n  \n\n</ion-header>\n\n<ion-content>\n\n  <h3><Menu></Menu> INFO</h3>\n\n  <ion-list>\n\n    <ion-item *ngFor="let pdp of menuInfo">\n\n      <p>{{pdp.fName}}</p>\n\n      <p>{{pdp.menuName}}</p>\n\n    </ion-item>\n\n    <ion-item class="side-side">\n\n      <ionic3-star-rating [(ngModel)]="rating" style="width:auto;" halfStar="false" activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#FFC300"\n\n        defaultColor="#aaaaaa" readonly="true" fontSize="32px" (ratingChanged)="logRatingChange($event)">\n\n      </ionic3-star-rating>\n\n      <input class="rate" [(ngModel)]="ratingNum" type="decimal" disabled="true" size="3"/>\n\n    </ion-item>\n\n  </ion-list>\n\n  <button class="wholebutton" (click)="navSubmitReview(data1)">\n\n    <h3 style="color:lightgreen">Write a Review</h3>\n\n  </button>\n\n  <h1 text-center>Reviews</h1>\n\n  <ion-card *ngFor="let rev of TopReview;let img of imgInfo" [hidden]="hvInfo">\n\n    <ion-grid>\n\n      <ion-row>\n\n        <ion-col col-12 >\n\n          <ion-avatar style="width:90px;height:90px;margin:0 auto;">\n\n            <img src="{{rev.cleanlinessRating}}">\n\n          </ion-avatar>\n\n        </ion-col>\n\n      </ion-row>\n\n      <ion-row >\n\n        <ion-col col-12 text-center style="margin-top:-15px;">         \n\n            <ionic3-star-rating [(ngModel)]="rating2" halfStar="false" activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#FFC300"\n\n            defaultColor="#aaaaaa" readonly="true" fontSize="28px" (ratingChanged)="logRatingChange($event)">\n\n          </ionic3-star-rating>\n\n        </ion-col>\n\n      </ion-row>\n\n      <ion-row>\n\n        <ion-col col-12> \n\n          {{rev.comments}}\n\n        </ion-col>\n\n      </ion-row>\n\n      <ion-row style="margin-top:10px;">\n\n        <ion-col col-6 text-left style="color:grey">\n\n          <ion-icon name="calendar"></ion-icon>   {{rev.datein | date: "dd MMM yyyy" }}\n\n        </ion-col>\n\n        <ion-col col-6 text-right>\n\n    <b style="font-style:italic;">-{{rev.custName}}</b>\n\n        </ion-col>\n\n      </ion-row>\n\n    </ion-grid>\n\n  </ion-card>\n\n  <button class="wholebutton" (click)="allReviews()">\n\n    <h3 style="color:lightgreen">See all Reviews</h3>\n\n  </button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\CUST-menuinfo\menuinfo.html"*/,
+            selector: 'page-menuinfo',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\CUST-menuinfo\menuinfo.html"*/'<ion-header>\n\n  \n\n  <ion-toolbar>\n\n    <ion-title text-center>\n\n      {{data1}} Details\n\n    </ion-title>\n\n    <!-- <ion-buttons slot="end" >\n\n      <button [ngStyle]="" class="heartbutton" (click)="favmenu(friend)">\n\n      <ion-icon size="large" [name]="visible ? \'heart\' : \'heart-empty\'"></ion-icon>\n\n    </button>\n\n    </ion-buttons> -->\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="favmenu()">\n\n        <ion-icon [name]="visible ? \'heart\' : \'heart-outline\'"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n  \n\n</ion-header>\n\n<ion-content>\n\n  <h3><Menu></Menu> INFO</h3>\n\n  <ion-list>\n\n    <ion-item *ngFor="let pdp of menuInfo">\n\n      <p>{{pdp.fName}}</p>\n\n      <p>{{pdp.menuName}}</p>\n\n    </ion-item>\n\n    <ion-item class="side-side">\n\n      <ionic3-star-rating [(ngModel)]="rating" style="width:auto;" halfStar="false" activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#FFC300"\n\n        defaultColor="#aaaaaa" readonly="true" fontSize="32px" (ratingChanged)="logRatingChange($event)">\n\n      </ionic3-star-rating>\n\n      <input class="rate" [(ngModel)]="ratingNum" type="decimal" disabled="true" size="3"/>\n\n    </ion-item>\n\n  </ion-list>\n\n  <button class="wholebutton" (click)="navSubmitReview(data1)">\n\n    <h3 style="color:lightgreen">Write a Review</h3>\n\n  </button>\n\n  <h1 text-center>Reviews</h1>\n\n  <ion-card *ngFor="let rev of TopReview;let img of imgInfo" [hidden]="hvInfo">\n\n    <ion-grid>\n\n      <ion-row>\n\n        <ion-col col-12 >\n\n          <ion-avatar style="width:90px;height:90px;margin:0 auto;">\n\n            <img src="{{rev.cleanlinessRating}}">\n\n          </ion-avatar>\n\n        </ion-col>\n\n      </ion-row>\n\n      <ion-row >\n\n        <ion-col col-12 text-center style="margin-top:-15px;">         \n\n            <ionic3-star-rating [(ngModel)]="rating2" halfStar="false" activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#FFC300"\n\n            defaultColor="#aaaaaa" readonly="true" fontSize="28px" (ratingChanged)="logRatingChange($event)">\n\n          </ionic3-star-rating>\n\n        </ion-col>\n\n      </ion-row>\n\n      <ion-row>\n\n        <ion-col col-12> \n\n          {{rev.comments}}\n\n        </ion-col>\n\n      </ion-row>\n\n      <ion-row style="margin-top:10px;">\n\n        <ion-col col-6 text-left style="color:grey">\n\n          <ion-icon name="calendar"></ion-icon>   {{rev.datein | date: "dd MMM yyyy" }}\n\n        </ion-col>\n\n        <ion-col col-6 text-right>\n\n    <b style="font-style:italic;">-{{rev.custName}}</b>\n\n        </ion-col>\n\n      </ion-row>\n\n    </ion-grid>\n\n  </ion-card>\n\n  <button class="wholebutton" (click)="allReviews()">\n\n    <h3 style="color:lightgreen">See all Reviews</h3>\n\n  </button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\CUST-menuinfo\menuinfo.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */]])
     ], CustMenuInfoPage);
@@ -1383,7 +1393,7 @@ var CustMenuInfoPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 120:
+/***/ 122:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1416,7 +1426,7 @@ var CustRescheduleBookingPage = /** @class */ (function () {
     }
     CustRescheduleBookingPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-cust-reschedule-booking',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\cust-reschedule-booking\cust-reschedule-booking.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Reschedule Booking\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page8">\n\n  <h3 id="rescheduleBooking-heading7" style="color:#000000;">\n\n    Choose\n\n  </h3>\n\n  <ion-list id="rescheduleBooking-list10">\n\n    <ion-item color="none" id="rescheduleBooking-list-item31">\n\n      PDP Name\n\n    </ion-item>\n\n    <ion-item color="none" id="rescheduleBooking-list-item101">\n\n      Date\n\n    </ion-item>\n\n    <ion-item color="none" id="rescheduleBooking-list-item32">\n\n      Time\n\n    </ion-item>\n\n    <ion-item id="rescheduleBooking-select2">\n\n      <ion-label>\n\n        Select Menu\n\n      </ion-label>\n\n      <ion-select name="">\n\n        <ion-option>\n\n          Menu 1\n\n        </ion-option>\n\n        <ion-option>\n\n          Menu 2\n\n        </ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n    <ion-item color="none" id="rescheduleBooking-list-item33">\n\n      Menu Item 1\n\n    </ion-item>\n\n  </ion-list>\n\n  <h3 id="rescheduleBooking-heading10" style="color:#000000;text-align:right;">\n\n    $totalPrice\n\n  </h3>\n\n  <button id="rescheduleBooking-button9" ion-button color="positive" block>\n\n    Confirm\n\n  </button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\cust-reschedule-booking\cust-reschedule-booking.html"*/
+            selector: 'page-cust-reschedule-booking',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\cust-reschedule-booking\cust-reschedule-booking.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Reschedule Booking\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page8">\n\n  <h3 id="rescheduleBooking-heading7" style="color:#000000;">\n\n    Choose\n\n  </h3>\n\n  <ion-list id="rescheduleBooking-list10">\n\n    <ion-item color="none" id="rescheduleBooking-list-item31">\n\n      PDP Name\n\n    </ion-item>\n\n    <ion-item color="none" id="rescheduleBooking-list-item101">\n\n      Date\n\n    </ion-item>\n\n    <ion-item color="none" id="rescheduleBooking-list-item32">\n\n      Time\n\n    </ion-item>\n\n    <ion-item id="rescheduleBooking-select2">\n\n      <ion-label>\n\n        Select Menu\n\n      </ion-label>\n\n      <ion-select name="">\n\n        <ion-option>\n\n          Menu 1\n\n        </ion-option>\n\n        <ion-option>\n\n          Menu 2\n\n        </ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n    <ion-item color="none" id="rescheduleBooking-list-item33">\n\n      Menu Item 1\n\n    </ion-item>\n\n  </ion-list>\n\n  <h3 id="rescheduleBooking-heading10" style="color:#000000;text-align:right;">\n\n    $totalPrice\n\n  </h3>\n\n  <button id="rescheduleBooking-button9" ion-button color="positive" block>\n\n    Confirm\n\n  </button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\cust-reschedule-booking\cust-reschedule-booking.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]])
     ], CustRescheduleBookingPage);
@@ -1424,135 +1434,6 @@ var CustRescheduleBookingPage = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=cust-reschedule-booking.js.map
-
-/***/ }),
-
-/***/ 121:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustBookData; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_Cust_Bookings__ = __webpack_require__(234);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(11);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var CustBookData = /** @class */ (function () {
-    function CustBookData(http, storage) {
-        this.http = http;
-        this.storage = storage;
-    }
-    CustBookData.prototype.getBookData = function () {
-        var _this = this;
-        console.log("In /getCustBookings");
-        var url = 'https://foodie1234.herokuapp.com/getCustBookings';
-        var postData = JSON.stringify({
-            // post data MUSt match the request.body.userID; 
-            custId: localStorage.getItem("loginid")
-        });
-        var httpOptions = {
-            headers: new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpHeaders */]({
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE'
-            })
-        };
-        this.http.post(url, postData, httpOptions).subscribe(function (data) {
-            var custBook = [];
-            console.log("In /getCustBookings");
-            _this.result = data;
-            for (var i = 0; i < _this.result.length; i++) {
-                custBook.push(new __WEBPACK_IMPORTED_MODULE_2__models_Cust_Bookings__["a" /* custBooking */](_this.result[i].bookID, _this.result[i].fName, _this.result[i].img, _this.result[i].location, _this.result[i].phone, _this.result[i].email, _this.result[i].bookDate, _this.result[i].bookTime, _this.result[i].bookPax, _this.result[i].bookNotes, _this.result[i].bookStatus, _this.result[i].menu_image, _this.result[i].custID));
-            }
-            console.log("test", data);
-            _this.storage.remove('CUSTBook');
-            _this.storage.set('CUSTBook', custBook);
-        });
-    };
-    CustBookData = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
-    ], CustBookData);
-    return CustBookData;
-}());
-
-//# sourceMappingURL=Cust-bookingData.js.map
-
-/***/ }),
-
-/***/ 122:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustPBookData; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_Cust_Bookings__ = __webpack_require__(234);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(11);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var CustPBookData = /** @class */ (function () {
-    function CustPBookData(http, storage) {
-        this.http = http;
-        this.storage = storage;
-    }
-    CustPBookData.prototype.getPBookData = function () {
-        var _this = this;
-        console.log("In /getCustPastBookings");
-        var url = 'https://foodie1234.herokuapp.com/getCustPastBookings';
-        var postData = JSON.stringify({
-            // post data MUSt match the request.body.userID; 
-            custId: localStorage.getItem("loginid")
-        });
-        var httpOptions = {
-            headers: new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpHeaders */]({
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE'
-            })
-        };
-        this.http.post(url, postData, httpOptions).subscribe(function (data) {
-            var custPBook = [];
-            console.log("In /getCustBookings");
-            _this.result = data;
-            for (var i = 0; i < _this.result.length; i++) {
-                custPBook.push(new __WEBPACK_IMPORTED_MODULE_2__models_Cust_Bookings__["a" /* custBooking */](_this.result[i].bookID, _this.result[i].fName, _this.result[i].img, _this.result[i].location, _this.result[i].phone, _this.result[i].email, _this.result[i].bookDate, _this.result[i].bookTime, _this.result[i].bookPax, _this.result[i].bookNotes, _this.result[i].bookStatus, _this.result[i].menu_image, _this.result[i].custID));
-            }
-            _this.storage.remove('CUSTPBook');
-            _this.storage.set('CUSTPBook', custPBook);
-        });
-    };
-    CustPBookData = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
-    ], CustPBookData);
-    return CustPBookData;
-}());
-
-//# sourceMappingURL=Cust-pastBookingData.js.map
 
 /***/ }),
 
@@ -1564,7 +1445,7 @@ var CustPBookData = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CUST_menuinfo_menuinfo__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CUST_menuinfo_menuinfo__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(11);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1613,7 +1494,7 @@ var CustMenuPage = /** @class */ (function () {
     };
     CustMenuPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-menu',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\CUST-menu\menu.html"*/'<!--\n\n  Generated template for the MenuPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar>\n\n    <ion-title text-center>Menu</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n    <ion-list>\n\n      <ion-item *ngFor="let menu of menuPage">\n\n        <ion-label class="fulllabel">\n\n          <button class="wholebutton" item-right (click)="goToMenuPage(menu.menuId,menu.menuName)">\n\n            <h3 text-left>{{menu.fName}} </h3>\n\n            <p text-left style="color:grey;">{{menu.menuName}} </p>\n\n            <p text-left>{{menu.menu_category}} </p>\n\n          </button>\n\n        </ion-label>\n\n      </ion-item>\n\n    </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\CUST-menu\menu.html"*/,
+            selector: 'page-menu',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\CUST-menu\menu.html"*/'<!--\n\n  Generated template for the MenuPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar>\n\n    <ion-title text-center>Menu</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n    <ion-list>\n\n      <ion-item *ngFor="let menu of menuPage">\n\n        <ion-label class="fulllabel">\n\n          <button class="wholebutton" item-right (click)="goToMenuPage(menu.menuId,menu.menuName)">\n\n            <h3 text-left>{{menu.fName}} </h3>\n\n            <p text-left style="color:grey;">{{menu.menuName}} </p>\n\n            <p text-left>{{menu.menu_category}} </p>\n\n          </button>\n\n        </ion-label>\n\n      </ion-item>\n\n    </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\CUST-menu\menu.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */]])
     ], CustMenuPage);
@@ -1665,10 +1546,10 @@ webpackEmptyAsyncContext.id = 176;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PDPTabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PDP_dashboard_PDP_dashboard__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PDP_bookings_PDP_bookings__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__PDP_menus_PDP_menus__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__PDP_profile_PDP_profile__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PDP_dashboard_PDP_dashboard__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PDP_bookings_PDP_bookings__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__PDP_menus_PDP_menus__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__PDP_profile_PDP_profile__ = __webpack_require__(116);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1696,7 +1577,7 @@ var PDPTabsPage = /** @class */ (function () {
     }
     PDPTabsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-PDP-tabs',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-tabs\PDP-tabs.html"*/'<ion-tabs id="tabs-tabs1">\n\n  <ion-tab [root]="tab1Root" tabTitle="Dashboard" tabIcon="home" id="tabs-tab1"></ion-tab>\n\n  <ion-tab [root]="tab2Root" tabTitle="Bookings" tabIcon="calendar" id="tabs-tab3"></ion-tab>\n\n  <ion-tab [root]="tab3Root" tabTitle="Menus" tabIcon="book" id="tabs-tab2"></ion-tab>\n\n  <ion-tab [root]="tab4Root" tabTitle="Profile" tabIcon="contact" id="tabs-tab4"></ion-tab>\n\n</ion-tabs>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-tabs\PDP-tabs.html"*/
+            selector: 'page-PDP-tabs',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-tabs\PDP-tabs.html"*/'<ion-tabs id="tabs-tabs1">\n\n  <ion-tab [root]="tab1Root" tabTitle="Dashboard" tabIcon="home" id="tabs-tab1"></ion-tab>\n\n  <ion-tab [root]="tab2Root" tabTitle="Bookings" tabIcon="calendar" id="tabs-tab3"></ion-tab>\n\n  <ion-tab [root]="tab3Root" tabTitle="Menus" tabIcon="book" id="tabs-tab2"></ion-tab>\n\n  <ion-tab [root]="tab4Root" tabTitle="Profile" tabIcon="contact" id="tabs-tab4"></ion-tab>\n\n</ion-tabs>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-tabs\PDP-tabs.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]])
     ], PDPTabsPage);
@@ -1887,7 +1768,7 @@ var MenuPage = /** @class */ (function () {
     };
     MenuPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-PDP-menu',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-menu\PDP-menu.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Menu\n\n    </ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-left solid (click)="goToEditMenu(menu)">\n\n        <ion-icon name="create"></ion-icon>\n\n        Edit Menu\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page10">\n\n  <img src="{{ menu?.menuImg }}" />\n\n  <div\n\n    *ngIf=\'menu?.menuImg == ""\'\n\n    style="width:100%;height:177px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;"\n\n  >\n\n    <i\n\n      class="icon ion-image"\n\n      style="font-size:64px;color:#888;vertical-align:middle;"\n\n    ></i>\n\n  </div>\n\n  <h2 id="menu-heading9" style="color:#000000;">\n\n    {{ menu?.menuName }} (${{ menuPrice | number:\'1.2-2\' }})\n\n  </h2>\n\n  <div id="menu-markdown18" class="show-list-numbers-and-dots">\n\n    <p style="color:#000000; float:left;">\n\n      Category:\n\n      <strong>\n\n        {{ menu?.menuCategory }}\n\n      </strong>\n\n    </p>\n\n  </div>\n\n  <button\n\n    id="menu-button18"\n\n    ion-button\n\n    color="positive"\n\n    block\n\n    on-click="goToNewDish()"\n\n  >\n\n    New Dish\n\n  </button>\n\n  <div class="menu-item-con">\n\n    <ion-card\n\n      id="menu-card29"\n\n      *ngFor="let menuItem of menuItems"\n\n      class="menu-item-each"\n\n    >\n\n      <ion-list>\n\n        <img src="{{ menuItem?.menuItemImg }}" />\n\n        <div\n\n          *ngIf=\'menuItem?.menuItemImg == ""\'\n\n          style="width:100%;height:177px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;"\n\n        >\n\n          <i\n\n            class="icon ion-image"\n\n            style="font-size:64px;color:#888;vertical-align:middle;"\n\n          ></i>\n\n        </div>\n\n        <ion-item color="none" id="menu-list-item66">\n\n          {{ menuItem.menuItemName }} (${{ menuItem.menuItemPrice |\n\n          number:\'1.2-2\' }})\n\n        </ion-item>\n\n        <button\n\n          id="menu-button6"\n\n          ion-button\n\n          color="positive"\n\n          (click)="goToEditDish(menuItem)"\n\n        >\n\n          Manage\n\n        </button>\n\n        <button\n\n          id="menu-button7"\n\n          ion-button\n\n          color="danger"\n\n          (click)="deleteConfirm(menuItem)"\n\n        >\n\n          Remove\n\n        </button>\n\n      </ion-list>\n\n    </ion-card>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-menu\PDP-menu.html"*/
+            selector: 'page-PDP-menu',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-menu\PDP-menu.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Menu\n\n    </ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-left solid (click)="goToEditMenu(menu)">\n\n        <ion-icon name="create"></ion-icon>\n\n        Edit Menu\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page10">\n\n  <img src="{{ menu?.menuImg }}" />\n\n  <div\n\n    *ngIf=\'menu?.menuImg == ""\'\n\n    style="width:100%;height:177px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;"\n\n  >\n\n    <i\n\n      class="icon ion-image"\n\n      style="font-size:64px;color:#888;vertical-align:middle;"\n\n    ></i>\n\n  </div>\n\n  <h2 id="menu-heading9" style="color:#000000;">\n\n    {{ menu?.menuName }} (${{ menuPrice | number:\'1.2-2\' }})\n\n  </h2>\n\n  <div id="menu-markdown18" class="show-list-numbers-and-dots">\n\n    <p style="color:#000000; float:left;">\n\n      Category:\n\n      <strong>\n\n        {{ menu?.menuCategory }}\n\n      </strong>\n\n    </p>\n\n  </div>\n\n  <button\n\n    id="menu-button18"\n\n    ion-button\n\n    color="positive"\n\n    block\n\n    on-click="goToNewDish()"\n\n  >\n\n    New Dish\n\n  </button>\n\n  <div class="menu-item-con">\n\n    <ion-card\n\n      id="menu-card29"\n\n      *ngFor="let menuItem of menuItems"\n\n      class="menu-item-each"\n\n    >\n\n      <ion-list>\n\n        <img src="{{ menuItem?.menuItemImg }}" />\n\n        <div\n\n          *ngIf=\'menuItem?.menuItemImg == ""\'\n\n          style="width:100%;height:177px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;"\n\n        >\n\n          <i\n\n            class="icon ion-image"\n\n            style="font-size:64px;color:#888;vertical-align:middle;"\n\n          ></i>\n\n        </div>\n\n        <ion-item color="none" id="menu-list-item66">\n\n          {{ menuItem.menuItemName }} (${{ menuItem.menuItemPrice |\n\n          number:\'1.2-2\' }})\n\n        </ion-item>\n\n        <button\n\n          id="menu-button6"\n\n          ion-button\n\n          color="positive"\n\n          (click)="goToEditDish(menuItem)"\n\n        >\n\n          Manage\n\n        </button>\n\n        <button\n\n          id="menu-button7"\n\n          ion-button\n\n          color="danger"\n\n          (click)="deleteConfirm(menuItem)"\n\n        >\n\n          Remove\n\n        </button>\n\n      </ion-list>\n\n    </ion-card>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-menu\PDP-menu.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_7__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_6__providers_PDP_menuData__["a" /* MenusData */]])
     ], MenuPage);
@@ -2059,7 +1940,7 @@ var NewDishPage = /** @class */ (function () {
     };
     NewDishPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-PDP-new-dish',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-new-dish\PDP-new-dish.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      New Dish\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page14">\n\n  <form id="newDish-form9" [formGroup]="newDish">\n\n    <div style="width:100%;height:220px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;">\n\n      <i class="icon ion-image" style="font-size:64px;color:#888;vertical-align:middle;"></i>\n\n    </div>\n\n    <button id="newDish-button24" ion-button color="positive" block>\n\n      Upload Image\n\n    </button>\n\n    <ion-item id="newDish-input8">\n\n      <ion-label>\n\n        Name\n\n      </ion-label>\n\n      <ion-input type="text" placeholder="Fish &amp; Chips" formControlName="menuItemName"></ion-input>\n\n    </ion-item>\n\n    <ion-item id="newDish-input9">\n\n      <ion-label>\n\n        Price ($)\n\n      </ion-label>\n\n      <ion-input type="number" placeholder="18.50" formControlName="menuItemPrice"></ion-input>\n\n    </ion-item>\n\n  </form>\n\n  <button id="newDish-button25" ion-button color="positive" block (click)="presentConfirm()">\n\n    Save\n\n  </button>\n\n  <button id="newDish-button26" ion-button color="positive" block (click)="presentCancel()">\n\n    Cancel\n\n  </button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-new-dish\PDP-new-dish.html"*/
+            selector: 'page-PDP-new-dish',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-new-dish\PDP-new-dish.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      New Dish\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page14">\n\n  <form id="newDish-form9" [formGroup]="newDish">\n\n    <div style="width:100%;height:220px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;">\n\n      <i class="icon ion-image" style="font-size:64px;color:#888;vertical-align:middle;"></i>\n\n    </div>\n\n    <button id="newDish-button24" ion-button color="positive" block>\n\n      Upload Image\n\n    </button>\n\n    <ion-item id="newDish-input8">\n\n      <ion-label>\n\n        Name\n\n      </ion-label>\n\n      <ion-input type="text" placeholder="Fish &amp; Chips" formControlName="menuItemName"></ion-input>\n\n    </ion-item>\n\n    <ion-item id="newDish-input9">\n\n      <ion-label>\n\n        Price ($)\n\n      </ion-label>\n\n      <ion-input type="number" placeholder="18.50" formControlName="menuItemPrice"></ion-input>\n\n    </ion-item>\n\n  </form>\n\n  <button id="newDish-button25" ion-button color="positive" block (click)="presentConfirm()">\n\n    Save\n\n  </button>\n\n  <button id="newDish-button26" ion-button color="positive" block (click)="presentCancel()">\n\n    Cancel\n\n  </button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-new-dish\PDP-new-dish.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera_ngx__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_5__providers_PDP_menuData__["a" /* MenusData */]])
     ], NewDishPage);
@@ -2081,7 +1962,7 @@ var NewDishPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_camera_ngx__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_PDP_menuData__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__PDP_menus_PDP_menus__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__PDP_menus_PDP_menus__ = __webpack_require__(56);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2281,7 +2162,7 @@ var EditMenuPage = /** @class */ (function () {
     };
     EditMenuPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-PDP-edit-menu',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-edit-menu\PDP-edit-menu.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Edit Menu\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page13">\n\n  <form id="editMenu-form12" [formGroup]="editMenu">\n\n    <img src="{{ menu?.menuImg }}" />\n\n    <div *ngIf=\'menu?.menuImg == ""\' style="width:100%;height:177px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;">\n\n      <i class="icon ion-image" style="font-size:64px;color:#888;vertical-align:middle;"></i>\n\n    </div>\n\n    <button id="editMenu-button21" ion-button color="positive" block>\n\n      Change Image\n\n    </button>\n\n    <ion-item id="editMenu-input6">\n\n      <ion-label>\n\n        Name\n\n      </ion-label>\n\n      <ion-input type="text" value="{{ menu.menuName }}" formControlName="menuName"></ion-input>\n\n    </ion-item>\n\n    <ion-item id="editMenu-select6">\n\n      <ion-label>\n\n        Category\n\n      </ion-label>\n\n      <ion-select name="" [(ngModel)]="default.option" formControlName="menuCategory">\n\n        <ion-option>Chinese</ion-option>\n\n        <ion-option>Western</ion-option>\n\n        <ion-option>Korean</ion-option>\n\n        <ion-option>Japanese</ion-option>\n\n        <ion-option>Malay</ion-option>\n\n        <ion-option>Indian</ion-option>\n\n        <ion-option>Thai</ion-option>\n\n        <ion-option>Vietnamese</ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n  </form>\n\n  <button id="editMenu-button22" ion-button color="positive" block (click)="presentConfirm()">\n\n    Save Menu\n\n  </button>\n\n  <button id="editMenu-button24" ion-button color="positive" block (click)="presentCancel()">\n\n    Cancel\n\n  </button>\n\n  <button id="editMenu-button23" ion-button color="danger" block (click)="deleteConfirm()">\n\n    Delete Menu\n\n  </button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-edit-menu\PDP-edit-menu.html"*/
+            selector: 'page-PDP-edit-menu',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-edit-menu\PDP-edit-menu.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Edit Menu\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page13">\n\n  <form id="editMenu-form12" [formGroup]="editMenu">\n\n    <img src="{{ menu?.menuImg }}" />\n\n    <div *ngIf=\'menu?.menuImg == ""\' style="width:100%;height:177px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;">\n\n      <i class="icon ion-image" style="font-size:64px;color:#888;vertical-align:middle;"></i>\n\n    </div>\n\n    <button id="editMenu-button21" ion-button color="positive" block>\n\n      Change Image\n\n    </button>\n\n    <ion-item id="editMenu-input6">\n\n      <ion-label>\n\n        Name\n\n      </ion-label>\n\n      <ion-input type="text" value="{{ menu.menuName }}" formControlName="menuName"></ion-input>\n\n    </ion-item>\n\n    <ion-item id="editMenu-select6">\n\n      <ion-label>\n\n        Category\n\n      </ion-label>\n\n      <ion-select name="" [(ngModel)]="default.option" formControlName="menuCategory">\n\n        <ion-option>Chinese</ion-option>\n\n        <ion-option>Western</ion-option>\n\n        <ion-option>Korean</ion-option>\n\n        <ion-option>Japanese</ion-option>\n\n        <ion-option>Malay</ion-option>\n\n        <ion-option>Indian</ion-option>\n\n        <ion-option>Thai</ion-option>\n\n        <ion-option>Vietnamese</ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n  </form>\n\n  <button id="editMenu-button22" ion-button color="positive" block (click)="presentConfirm()">\n\n    Save Menu\n\n  </button>\n\n  <button id="editMenu-button24" ion-button color="positive" block (click)="presentCancel()">\n\n    Cancel\n\n  </button>\n\n  <button id="editMenu-button23" ion-button color="danger" block (click)="deleteConfirm()">\n\n    Delete Menu\n\n  </button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-edit-menu\PDP-edit-menu.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_camera_ngx__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_5__providers_PDP_menuData__["a" /* MenusData */]])
     ], EditMenuPage);
@@ -2433,7 +2314,7 @@ var EditDishPage = /** @class */ (function () {
     };
     EditDishPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-PDP-edit-dish',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-edit-dish\PDP-edit-dish.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Edit Dish\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page15">\n\n  <form id="editDish-form10" [formGroup]="editDish">\n\n    <img src="{{ dish?.menuItemImg }}" />\n\n    <div *ngIf=\'dish?.menuItemImg == ""\' style="width:100%;height:177px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;">\n\n      <i class="icon ion-image" style="font-size:64px;color:#888;vertical-align:middle;"></i>\n\n    </div>\n\n    <button id="editDish-button27" ion-button color="positive" block>\n\n      Change Image\n\n    </button>\n\n    <ion-item id="editDish-input9">\n\n      <ion-label>\n\n        Name\n\n      </ion-label>\n\n      <ion-input type="text" value="{{ dish.menuItemName }}" formControlName="dishName"></ion-input>\n\n    </ion-item>\n\n    <ion-item id="editDish-input10">\n\n      <ion-label>\n\n        Price ($)\n\n      </ion-label>\n\n      <ion-input type="text" value="{{ dish.menuItemPrice }}" formControlName="dishPrice"></ion-input>\n\n    </ion-item>\n\n  </form>\n\n  <button id="editDish-button28" ion-button color="positive" block (click)="presentConfirm()">\n\n    Save\n\n  </button>\n\n  <button id="editDish-button29" ion-button color="positive" block (click)="presentCancel()">\n\n    Cancel\n\n  </button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-edit-dish\PDP-edit-dish.html"*/
+            selector: 'page-PDP-edit-dish',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-edit-dish\PDP-edit-dish.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Edit Dish\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page15">\n\n  <form id="editDish-form10" [formGroup]="editDish">\n\n    <img src="{{ dish?.menuItemImg }}" />\n\n    <div *ngIf=\'dish?.menuItemImg == ""\' style="width:100%;height:177px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;">\n\n      <i class="icon ion-image" style="font-size:64px;color:#888;vertical-align:middle;"></i>\n\n    </div>\n\n    <button id="editDish-button27" ion-button color="positive" block>\n\n      Change Image\n\n    </button>\n\n    <ion-item id="editDish-input9">\n\n      <ion-label>\n\n        Name\n\n      </ion-label>\n\n      <ion-input type="text" value="{{ dish.menuItemName }}" formControlName="dishName"></ion-input>\n\n    </ion-item>\n\n    <ion-item id="editDish-input10">\n\n      <ion-label>\n\n        Price ($)\n\n      </ion-label>\n\n      <ion-input type="text" value="{{ dish.menuItemPrice }}" formControlName="dishPrice"></ion-input>\n\n    </ion-item>\n\n  </form>\n\n  <button id="editDish-button28" ion-button color="positive" block (click)="presentConfirm()">\n\n    Save\n\n  </button>\n\n  <button id="editDish-button29" ion-button color="positive" block (click)="presentCancel()">\n\n    Cancel\n\n  </button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-edit-dish\PDP-edit-dish.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_camera_ngx__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_3__providers_PDP_menuData__["a" /* MenusData */]])
     ], EditDishPage);
@@ -2455,7 +2336,7 @@ var EditDishPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera_ngx__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_PDP_menuData__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__PDP_menus_PDP_menus__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__PDP_menus_PDP_menus__ = __webpack_require__(56);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2600,7 +2481,7 @@ var NewMenuPage = /** @class */ (function () {
     };
     NewMenuPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-PDP-new-menu',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-new-menu\PDP-new-menu.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      New Menu\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page13">\n\n  <form id="newMenu-form12" [formGroup]="newMenu">\n\n    <div style="width:100%;height:220px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;">\n\n      <i class="icon ion-image" style="font-size:64px;color:#888;vertical-align:middle;"></i>\n\n    </div>\n\n    <button id="newMenu-button21" ion-button color="positive" block>\n\n      Upload Image\n\n    </button>\n\n    <ion-item id="newMenu-input6">\n\n      <ion-label>\n\n        Name\n\n      </ion-label>\n\n      <ion-input type="text" placeholder="French Friday" formControlName="menuName"></ion-input>\n\n    </ion-item>\n\n    <ion-item id="newMenu-select6">\n\n      <ion-label>\n\n        Category\n\n      </ion-label>\n\n      <ion-select name="" [(ngModel)]="default.option" formControlName="menuCategory">\n\n        <ion-option>Chinese</ion-option>\n\n        <ion-option>Western</ion-option>\n\n        <ion-option>Korean</ion-option>\n\n        <ion-option>Japanese</ion-option>\n\n        <ion-option>Malay</ion-option>\n\n        <ion-option>Indian</ion-option>\n\n        <ion-option>Thai</ion-option>\n\n        <ion-option>Vietnamese</ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n  </form>\n\n  <button id="newMenu-button22" ion-button color="positive" block (click)="presentConfirm()">\n\n    Save Menu\n\n  </button>\n\n  <button id="newMenu-button23" ion-button color="positive" block (click)="presentCancel()">\n\n    Cancel\n\n  </button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-new-menu\PDP-new-menu.html"*/
+            selector: 'page-PDP-new-menu',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-new-menu\PDP-new-menu.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      New Menu\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page13">\n\n  <form id="newMenu-form12" [formGroup]="newMenu">\n\n    <div style="width:100%;height:220px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;">\n\n      <i class="icon ion-image" style="font-size:64px;color:#888;vertical-align:middle;"></i>\n\n    </div>\n\n    <button id="newMenu-button21" ion-button color="positive" block>\n\n      Upload Image\n\n    </button>\n\n    <ion-item id="newMenu-input6">\n\n      <ion-label>\n\n        Name\n\n      </ion-label>\n\n      <ion-input type="text" placeholder="French Friday" formControlName="menuName"></ion-input>\n\n    </ion-item>\n\n    <ion-item id="newMenu-select6">\n\n      <ion-label>\n\n        Category\n\n      </ion-label>\n\n      <ion-select name="" [(ngModel)]="default.option" formControlName="menuCategory">\n\n        <ion-option>Chinese</ion-option>\n\n        <ion-option>Western</ion-option>\n\n        <ion-option>Korean</ion-option>\n\n        <ion-option>Japanese</ion-option>\n\n        <ion-option>Malay</ion-option>\n\n        <ion-option>Indian</ion-option>\n\n        <ion-option>Thai</ion-option>\n\n        <ion-option>Vietnamese</ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n  </form>\n\n  <button id="newMenu-button22" ion-button color="positive" block (click)="presentConfirm()">\n\n    Save Menu\n\n  </button>\n\n  <button id="newMenu-button23" ion-button color="positive" block (click)="presentCancel()">\n\n    Cancel\n\n  </button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-new-menu\PDP-new-menu.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera_ngx__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_5__providers_PDP_menuData__["a" /* MenusData */]])
     ], NewMenuPage);
@@ -2618,11 +2499,11 @@ var NewMenuPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditProfilePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_PDP_profileData__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_PDP_profileData__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_camera_ngx__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__PDP_profile_PDP_profile__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__PDP_profile_PDP_profile__ = __webpack_require__(116);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2759,7 +2640,7 @@ var EditProfilePage = /** @class */ (function () {
     };
     EditProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-PDP-edit-profile',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-edit-profile\PDP-edit-profile.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Edit Profile\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page12">\n\n  <form id="editProfile-form8" [formGroup]="editProfile">\n\n    <img src="{{ profile?.image }}" />\n\n    <button id="editProfile-button12" ion-button color="positive" block>\n\n      Change Image\n\n    </button>\n\n    <ion-item id="editProfile-input7">\n\n      <ion-label>\n\n        Name\n\n      </ion-label>\n\n      <ion-input type="text" value="{{ profile.fName }}" formControlName="fName"></ion-input>\n\n    </ion-item>\n\n    <ion-item id="editProfile-textarea1">\n\n      <ion-label>\n\n        Description\n\n      </ion-label>\n\n      <ion-textarea value="{{ profile.desc }}" formControlName="desc"></ion-textarea>\n\n    </ion-item>\n\n    <ion-item id="editProfile-input7">\n\n      <ion-label>\n\n        Location\n\n      </ion-label>\n\n      <ion-input type="text" value="{{ profile.add }}" formControlName="add"></ion-input>\n\n    </ion-item>\n\n    <ion-item id="editProfile-input7">\n\n      <ion-label>\n\n        Mobile\n\n      </ion-label>\n\n      <ion-input type="text" value="{{ profile.phone }}" formControlName="phone"></ion-input>\n\n    </ion-item>\n\n    <ion-item id="editProfile-input7">\n\n      <ion-label>\n\n        Email\n\n      </ion-label>\n\n      <ion-input type="text" value="{{ profile.email }}" formControlName="email"></ion-input>\n\n    </ion-item>\n\n  </form>\n\n  <button id="editProfile-button19" ion-button color="positive" block (click)="presentConfirm()">\n\n    Save\n\n  </button>\n\n  <button id="editProfile-button19" ion-button color="positive" block (click)="presentCancel()">\n\n    Cancel\n\n  </button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-edit-profile\PDP-edit-profile.html"*/
+            selector: 'page-PDP-edit-profile',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-edit-profile\PDP-edit-profile.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Edit Profile\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page12">\n\n  <form id="editProfile-form8" [formGroup]="editProfile">\n\n    <img src="{{ profile?.image }}" />\n\n    <button id="editProfile-button12" ion-button color="positive" block>\n\n      Change Image\n\n    </button>\n\n    <ion-item id="editProfile-input7">\n\n      <ion-label>\n\n        Name\n\n      </ion-label>\n\n      <ion-input type="text" value="{{ profile.fName }}" formControlName="fName"></ion-input>\n\n    </ion-item>\n\n    <ion-item id="editProfile-textarea1">\n\n      <ion-label>\n\n        Description\n\n      </ion-label>\n\n      <ion-textarea value="{{ profile.desc }}" formControlName="desc"></ion-textarea>\n\n    </ion-item>\n\n    <ion-item id="editProfile-input7">\n\n      <ion-label>\n\n        Location\n\n      </ion-label>\n\n      <ion-input type="text" value="{{ profile.add }}" formControlName="add"></ion-input>\n\n    </ion-item>\n\n    <ion-item id="editProfile-input7">\n\n      <ion-label>\n\n        Mobile\n\n      </ion-label>\n\n      <ion-input type="text" value="{{ profile.phone }}" formControlName="phone"></ion-input>\n\n    </ion-item>\n\n    <ion-item id="editProfile-input7">\n\n      <ion-label>\n\n        Email\n\n      </ion-label>\n\n      <ion-input type="text" value="{{ profile.email }}" formControlName="email"></ion-input>\n\n    </ion-item>\n\n  </form>\n\n  <button id="editProfile-button19" ion-button color="positive" block (click)="presentConfirm()">\n\n    Save\n\n  </button>\n\n  <button id="editProfile-button19" ion-button color="positive" block (click)="presentCancel()">\n\n    Cancel\n\n  </button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-edit-profile\PDP-edit-profile.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_camera_ngx__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_2__providers_PDP_profileData__["a" /* ProfileData */]])
     ], EditProfilePage);
@@ -2778,7 +2659,7 @@ var EditProfilePage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__discover_discover__ = __webpack_require__(229);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CUST_favourites_favourites__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CUST_favourites_favourites__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__cust_bookings_cust_bookings__ = __webpack_require__(231);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__CUST_profile_profile__ = __webpack_require__(237);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2808,7 +2689,7 @@ var TabsControllerPage = /** @class */ (function () {
     }
     TabsControllerPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-tabs-controller',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\tabs-controller\tabs-controller.html"*/'<ion-tabs id="tabsController-tabs1 main-tabs"> \n\n  <ion-tab [root]="tab1Root" tabTitle="Discover" tabIcon="compass" id="tabsController-tab1"></ion-tab>\n\n  <ion-tab [root]="tab2Root" tabTitle="Favourites" tabIcon="heart-outline" id="tabsController-tab2"></ion-tab>\n\n  <ion-tab [root]="tab3Root" tabTitle="Bookings" tabIcon="calendar" id="tabsController-tab3"></ion-tab>\n\n  <ion-tab [root]="tab4Root" tabTitle="Profile" tabIcon="contact" id="tabsController-tab4"></ion-tab>\n\n</ion-tabs>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\tabs-controller\tabs-controller.html"*/
+            selector: 'page-tabs-controller',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\tabs-controller\tabs-controller.html"*/'<ion-tabs id="tabsController-tabs1 main-tabs"> \n\n  <ion-tab [root]="tab1Root" tabTitle="Discover" tabIcon="compass" id="tabsController-tab1"></ion-tab>\n\n  <ion-tab [root]="tab2Root" tabTitle="Favourites" tabIcon="heart-outline" id="tabsController-tab2"></ion-tab>\n\n  <ion-tab [root]="tab3Root" tabTitle="Bookings" tabIcon="calendar" id="tabsController-tab3"></ion-tab>\n\n  <ion-tab [root]="tab4Root" tabTitle="Profile" tabIcon="contact" id="tabsController-tab4"></ion-tab>\n\n</ion-tabs>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\tabs-controller\tabs-controller.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]])
     ], TabsControllerPage);
@@ -2827,7 +2708,7 @@ var TabsControllerPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__menu_details_menu_details__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__menu_details_menu_details__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_jquery__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_jquery__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2932,7 +2813,7 @@ var DiscoverPage = /** @class */ (function () {
     };
     DiscoverPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: "page-discover",template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\discover\discover.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Discover\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page2" (window:resize)="resizeEvent($event)">\n\n  <form id="discover-form1">\n\n    <ion-searchbar\n\n      placeholder="Search"\n\n      name="search"\n\n      id="discover-search1"\n\n      (ionInput)="getItems($event)"\n\n    ></ion-searchbar>\n\n    <ion-item id="discover-select1" class="discover-filter">\n\n      <ion-label>\n\n        Sort by:\n\n      </ion-label>\n\n      <ion-select name="filter" (ionChange)="sortProfiles($event)">\n\n        <ion-option value="distance_closest">Distance (Closest)</ion-option>\n\n        <ion-option value="distance_furthest">Distance (Furthest)</ion-option>\n\n        <ion-option value="price_low_high">Price (Low to High)</ion-option>\n\n        <ion-option value="price_high_low">Price (High to Low)</ion-option>\n\n        <ion-option value="reviews_low_high">Reviews (Low to High)</ion-option>\n\n        <ion-option value="reviews_high_low">Reviews (High to Low)</ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n  </form>\n\n  <h4 id="discover-heading1" class="header-m">\n\n    Discover around <span class="color-darkyellow">Kovan</span>\n\n  </h4>\n\n  <div class="discover-each-con">\n\n    <ion-card\n\n      id="discover-card21"\n\n      class="discover-card-each"\n\n      *ngFor="let profile of profileList"\n\n    >\n\n      <ion-list>\n\n        <ion-item\n\n          color="none"\n\n          id="discover-list-item3"\n\n          (click)="goToMenuDetailsPage($event, profile)"\n\n        >\n\n          <ion-avatar item-left>\n\n            <img src="{{profile.img}}" />\n\n          </ion-avatar>\n\n          <h2 style="margin-bottom:0;font-weight:500;color:#424242;">\n\n            {{profile.fName}}\n\n          </h2>\n\n        </ion-item>\n\n        <div class="discover-image">\n\n          <img src="{{profile.menu_image}}" alt="" />\n\n        </div>\n\n        <div class="discover-info">\n\n          <h5\n\n            id="discover-heading2"\n\n            class="discover-menuname"\n\n            style="color:#424242;font-weight:600;font-size:1.6rem;"\n\n            (click)="goToMenuDetailsPage($event, profile)"\n\n          >\n\n            {{profile.menuName}}\n\n          </h5>\n\n          <div\n\n            id="discover-markdown3"\n\n            class="show-list-numbers-and-dots"\n\n            style="display:flex;align-items:center;margin-bottom:5px;"\n\n          >\n\n            <ion-icon\n\n              name="pin"\n\n              style="color:#929292;width:15px;text-align:center;"\n\n            ></ion-icon>\n\n            <p\n\n              style="color:#000000;margin-left:7px;margin-bottom:0;font-size:1.4rem;"\n\n            >\n\n              {{profile.location}}\n\n            </p>\n\n          </div>\n\n          <div\n\n            id="discover-markdown4"\n\n            class="show-list-numbers-and-dots"\n\n            style="display:flex;align-items:center;margin-bottom:5px;"\n\n          >\n\n            <ion-icon\n\n              name="pricetag"\n\n              style="color:#929292;width:15px;text-align:center;"\n\n            ></ion-icon>\n\n            <p\n\n              style="color:#000000;margin-left:7px;margin-bottom:0;font-size:1.4rem;"\n\n            >\n\n              {{profile.menu_category}}\n\n            </p>\n\n          </div>\n\n          <div\n\n            class="show-list-numbers-and-dots"\n\n            style="display:flex;align-items:center;margin-bottom:5px;"\n\n          >\n\n            <ion-icon\n\n              name="list-box"\n\n              style="color:#929292;width:15px;text-align:center;"\n\n            ></ion-icon>\n\n            <p\n\n              style="color:#000000;margin-left:7px;margin-bottom:0;font-size:1.4rem;"\n\n            >\n\n              ~${{profile.menu_price}}/pax\n\n            </p>\n\n          </div>\n\n          <div class="discover-ratings">\n\n            <span\n\n              class="each-star"\n\n              [ngClass]="{\'active\' : profile.menu_ratings > 0}"\n\n            >\n\n              <svg\n\n                xmlns="http://www.w3.org/2000/svg"\n\n                width="24"\n\n                height="24"\n\n                viewBox="0 0 24 24"\n\n              >\n\n                <path\n\n                  d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524-4.721 2.525.942-5.27-3.861-3.71 5.305-.733 2.335-4.817zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"\n\n                />\n\n              </svg>\n\n            </span>\n\n            <span\n\n              class="each-star"\n\n              [ngClass]="{\'active\' : profile.menu_ratings > 1}"\n\n            >\n\n              <svg\n\n                xmlns="http://www.w3.org/2000/svg"\n\n                width="24"\n\n                height="24"\n\n                viewBox="0 0 24 24"\n\n              >\n\n                <path\n\n                  d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524-4.721 2.525.942-5.27-3.861-3.71 5.305-.733 2.335-4.817zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"\n\n                />\n\n              </svg>\n\n            </span>\n\n            <span\n\n              class="each-star"\n\n              [ngClass]="{\'active\' : profile.menu_ratings > 2}"\n\n            >\n\n              <svg\n\n                xmlns="http://www.w3.org/2000/svg"\n\n                width="24"\n\n                height="24"\n\n                viewBox="0 0 24 24"\n\n              >\n\n                <path\n\n                  d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524-4.721 2.525.942-5.27-3.861-3.71 5.305-.733 2.335-4.817zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"\n\n                />\n\n              </svg>\n\n            </span>\n\n            <span\n\n              class="each-star"\n\n              [ngClass]="{\'active\' : profile.menu_ratings > 3}"\n\n            >\n\n              <svg\n\n                xmlns="http://www.w3.org/2000/svg"\n\n                width="24"\n\n                height="24"\n\n                viewBox="0 0 24 24"\n\n              >\n\n                <path\n\n                  d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524-4.721 2.525.942-5.27-3.861-3.71 5.305-.733 2.335-4.817zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"\n\n                />\n\n              </svg>\n\n            </span>\n\n            <span\n\n              class="each-star"\n\n              [ngClass]="{\'active\' : profile.menu_ratings > 4}"\n\n            >\n\n              <svg\n\n                xmlns="http://www.w3.org/2000/svg"\n\n                width="24"\n\n                height="24"\n\n                viewBox="0 0 24 24"\n\n              >\n\n                <path\n\n                  d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524-4.721 2.525.942-5.27-3.861-3.71 5.305-.733 2.335-4.817zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"\n\n                />\n\n              </svg>\n\n            </span>\n\n            <span class="rating-amount"\n\n              >{{profile.menu_rating_amt}} reviews</span\n\n            >\n\n          </div>\n\n        </div>\n\n      </ion-list>\n\n    </ion-card>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\discover\discover.html"*/
+            selector: "page-discover",template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\discover\discover.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Discover\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page2" (window:resize)="resizeEvent($event)">\n\n  <form id="discover-form1">\n\n    <ion-searchbar\n\n      placeholder="Search"\n\n      name="search"\n\n      id="discover-search1"\n\n      (ionInput)="getItems($event)"\n\n    ></ion-searchbar>\n\n    <ion-item id="discover-select1" class="discover-filter">\n\n      <ion-label>\n\n        Sort by:\n\n      </ion-label>\n\n      <ion-select name="filter" (ionChange)="sortProfiles($event)">\n\n        <ion-option value="distance_closest">Distance (Closest)</ion-option>\n\n        <ion-option value="distance_furthest">Distance (Furthest)</ion-option>\n\n        <ion-option value="price_low_high">Price (Low to High)</ion-option>\n\n        <ion-option value="price_high_low">Price (High to Low)</ion-option>\n\n        <ion-option value="reviews_low_high">Reviews (Low to High)</ion-option>\n\n        <ion-option value="reviews_high_low">Reviews (High to Low)</ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n  </form>\n\n  <h4 id="discover-heading1" class="header-m">\n\n    Discover around <span class="color-darkyellow">Kovan</span>\n\n  </h4>\n\n  <div class="discover-each-con">\n\n    <ion-card\n\n      id="discover-card21"\n\n      class="discover-card-each"\n\n      *ngFor="let profile of profileList"\n\n    >\n\n      <ion-list>\n\n        <ion-item\n\n          color="none"\n\n          id="discover-list-item3"\n\n          (click)="goToMenuDetailsPage($event, profile)"\n\n        >\n\n          <ion-avatar item-left>\n\n            <img src="{{profile.img}}" />\n\n          </ion-avatar>\n\n          <h2 style="margin-bottom:0;font-weight:500;color:#424242;">\n\n            {{profile.fName}}\n\n          </h2>\n\n        </ion-item>\n\n        <div class="discover-image">\n\n          <img src="{{profile.menu_image}}" alt="" />\n\n        </div>\n\n        <div class="discover-info">\n\n          <h5\n\n            id="discover-heading2"\n\n            class="discover-menuname"\n\n            style="color:#424242;font-weight:600;font-size:1.6rem;"\n\n            (click)="goToMenuDetailsPage($event, profile)"\n\n          >\n\n            {{profile.menuName}}\n\n          </h5>\n\n          <div\n\n            id="discover-markdown3"\n\n            class="show-list-numbers-and-dots"\n\n            style="display:flex;align-items:center;margin-bottom:5px;"\n\n          >\n\n            <ion-icon\n\n              name="pin"\n\n              style="color:#929292;width:15px;text-align:center;"\n\n            ></ion-icon>\n\n            <p\n\n              style="color:#000000;margin-left:7px;margin-bottom:0;font-size:1.4rem;"\n\n            >\n\n              {{profile.location}}\n\n            </p>\n\n          </div>\n\n          <div\n\n            id="discover-markdown4"\n\n            class="show-list-numbers-and-dots"\n\n            style="display:flex;align-items:center;margin-bottom:5px;"\n\n          >\n\n            <ion-icon\n\n              name="pricetag"\n\n              style="color:#929292;width:15px;text-align:center;"\n\n            ></ion-icon>\n\n            <p\n\n              style="color:#000000;margin-left:7px;margin-bottom:0;font-size:1.4rem;"\n\n            >\n\n              {{profile.menu_category}}\n\n            </p>\n\n          </div>\n\n          <div\n\n            class="show-list-numbers-and-dots"\n\n            style="display:flex;align-items:center;margin-bottom:5px;"\n\n          >\n\n            <ion-icon\n\n              name="list-box"\n\n              style="color:#929292;width:15px;text-align:center;"\n\n            ></ion-icon>\n\n            <p\n\n              style="color:#000000;margin-left:7px;margin-bottom:0;font-size:1.4rem;"\n\n            >\n\n              ~${{profile.menu_price}}/pax\n\n            </p>\n\n          </div>\n\n          <div class="discover-ratings">\n\n            <span\n\n              class="each-star"\n\n              [ngClass]="{\'active\' : profile.menu_ratings > 0}"\n\n            >\n\n              <svg\n\n                xmlns="http://www.w3.org/2000/svg"\n\n                width="24"\n\n                height="24"\n\n                viewBox="0 0 24 24"\n\n              >\n\n                <path\n\n                  d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524-4.721 2.525.942-5.27-3.861-3.71 5.305-.733 2.335-4.817zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"\n\n                />\n\n              </svg>\n\n            </span>\n\n            <span\n\n              class="each-star"\n\n              [ngClass]="{\'active\' : profile.menu_ratings > 1}"\n\n            >\n\n              <svg\n\n                xmlns="http://www.w3.org/2000/svg"\n\n                width="24"\n\n                height="24"\n\n                viewBox="0 0 24 24"\n\n              >\n\n                <path\n\n                  d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524-4.721 2.525.942-5.27-3.861-3.71 5.305-.733 2.335-4.817zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"\n\n                />\n\n              </svg>\n\n            </span>\n\n            <span\n\n              class="each-star"\n\n              [ngClass]="{\'active\' : profile.menu_ratings > 2}"\n\n            >\n\n              <svg\n\n                xmlns="http://www.w3.org/2000/svg"\n\n                width="24"\n\n                height="24"\n\n                viewBox="0 0 24 24"\n\n              >\n\n                <path\n\n                  d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524-4.721 2.525.942-5.27-3.861-3.71 5.305-.733 2.335-4.817zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"\n\n                />\n\n              </svg>\n\n            </span>\n\n            <span\n\n              class="each-star"\n\n              [ngClass]="{\'active\' : profile.menu_ratings > 3}"\n\n            >\n\n              <svg\n\n                xmlns="http://www.w3.org/2000/svg"\n\n                width="24"\n\n                height="24"\n\n                viewBox="0 0 24 24"\n\n              >\n\n                <path\n\n                  d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524-4.721 2.525.942-5.27-3.861-3.71 5.305-.733 2.335-4.817zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"\n\n                />\n\n              </svg>\n\n            </span>\n\n            <span\n\n              class="each-star"\n\n              [ngClass]="{\'active\' : profile.menu_ratings > 4}"\n\n            >\n\n              <svg\n\n                xmlns="http://www.w3.org/2000/svg"\n\n                width="24"\n\n                height="24"\n\n                viewBox="0 0 24 24"\n\n              >\n\n                <path\n\n                  d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524-4.721 2.525.942-5.27-3.861-3.71 5.305-.733 2.335-4.817zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"\n\n                />\n\n              </svg>\n\n            </span>\n\n            <span class="rating-amount"\n\n              >{{profile.menu_rating_amt}} reviews</span\n\n            >\n\n          </div>\n\n        </div>\n\n      </ion-list>\n\n    </ion-card>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\discover\discover.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]])
     ], DiscoverPage);
@@ -3084,7 +2965,7 @@ var MakeBookingPage = /** @class */ (function () {
     };
     MakeBookingPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: "page-make-booking",template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\make-booking\make-booking.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Make Booking\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page7">\n\n  <h4\n\n    id="makeBooking-heading6"\n\n    style="color:#000000;font-size:1.7rem;margin-bottom:15px;"\n\n  >\n\n    Confirm Booking\n\n  </h4>\n\n  <ion-list id="makeBooking-list3" class="booking-details-list">\n\n    <ion-item\n\n      color="none"\n\n      id="makeBooking-list-item20"\n\n      class="booking-details-each"\n\n    >\n\n      <p ion-text class="label-text" color="black">Chef</p>\n\n      <p ion-text class="label-detail" color="black">\n\n        {{this.bookingDetails.fName}}\n\n      </p>\n\n    </ion-item>\n\n    <ion-item\n\n      color="none"\n\n      id="makeBooking-list-item23"\n\n      class="booking-details-each"\n\n    >\n\n      <p ion-text class="label-text" color="black">Location</p>\n\n      <p ion-text class="label-detail" color="black">\n\n        {{this.bookingDetails.location}}\n\n      </p>\n\n    </ion-item>\n\n    <ion-item\n\n      color="none"\n\n      id="makeBooking-list-item21"\n\n      class="booking-details-each"\n\n    >\n\n      <ion-label class="label-text" color="black">Date</ion-label>\n\n      <ion-datetime\n\n        displayFormat="DD MMM YYYY"\n\n        class="label-detail label-date"\n\n        color="black"\n\n        [(ngModel)]="date"\n\n        (ionChange)="updateMyDate($event)"\n\n      ></ion-datetime>\n\n    </ion-item>\n\n    <ion-item\n\n      color="none"\n\n      id="makeBooking-list-item22"\n\n      class="booking-details-each"\n\n    >\n\n      <ion-label class="label-text" color="black">Time</ion-label>\n\n      <ion-select\n\n        okText="Okay"\n\n        cancelText="Cancel"\n\n        placeholder="Select a time"\n\n        class="select-field"\n\n        (ionChange)="updateMyTime($event)"\n\n      >\n\n        <ion-option value="13:00:00">1300 - 1500</ion-option>\n\n        <ion-option value="16:00:00">1600 - 1800</ion-option>\n\n        <ion-option value="19:00:00">1900 - 2100</ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n    <ion-item\n\n      color="none"\n\n      id="makeBooking-list-item24"\n\n      class="booking-details-each"\n\n    >\n\n      <ion-label class="label-text" color="black">Pax</ion-label>\n\n      <ion-select\n\n        value="1"\n\n        okText="Okay"\n\n        cancelText="Cancel"\n\n        placeholder="How many pax"\n\n        class="select-field"\n\n        (ionChange)="updateMyPax($event)"\n\n      >\n\n        <ion-option value="1">1</ion-option>\n\n        <ion-option value="2">2</ion-option>\n\n        <ion-option value="3">3</ion-option>\n\n        <ion-option value="4">4</ion-option>\n\n        <ion-option value="5">5</ion-option>\n\n        <ion-option value="6">6</ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n    <ion-item\n\n      color="none"\n\n      id="makeBooking-list-item25"\n\n      class="booking-details-each ion-textarea-con"\n\n    >\n\n      <ion-label class="label-text" color="black">Notes</ion-label>\n\n      <ion-textarea\n\n        class="ion-textarea-element"\n\n        (input)="updateMyNotes($event.target.value)"\n\n        placeholder="Indicate your preferences..."\n\n        maxlength="100"\n\n        (keyup)="countChar($event)"\n\n      ></ion-textarea>\n\n    </ion-item>\n\n    <ion-item class="characters-indicator">\n\n      <p><span class="amount">0</span>/100 characters</p>\n\n    </ion-item>\n\n  </ion-list>\n\n  <div class="make-booking-cta">\n\n    <button\n\n      id="makeBooking-button3"\n\n      class="cancel-btn"\n\n      ion-button\n\n      outline\n\n      color="black"\n\n      (click)="cancelBooking()"\n\n    >\n\n      Cancel\n\n    </button>\n\n    <button\n\n      id="makeBooking-button4"\n\n      ion-button\n\n      color="yellow"\n\n      (click)="makeBooking()"\n\n    >\n\n      Confirm\n\n    </button>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\make-booking\make-booking.html"*/
+            selector: "page-make-booking",template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\make-booking\make-booking.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Make Booking\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page7">\n\n  <h4\n\n    id="makeBooking-heading6"\n\n    style="color:#000000;font-size:1.7rem;margin-bottom:15px;"\n\n  >\n\n    Confirm Booking\n\n  </h4>\n\n  <ion-list id="makeBooking-list3" class="booking-details-list">\n\n    <ion-item\n\n      color="none"\n\n      id="makeBooking-list-item20"\n\n      class="booking-details-each"\n\n    >\n\n      <p ion-text class="label-text" color="black">Chef</p>\n\n      <p ion-text class="label-detail" color="black">\n\n        {{this.bookingDetails.fName}}\n\n      </p>\n\n    </ion-item>\n\n    <ion-item\n\n      color="none"\n\n      id="makeBooking-list-item23"\n\n      class="booking-details-each"\n\n    >\n\n      <p ion-text class="label-text" color="black">Location</p>\n\n      <p ion-text class="label-detail" color="black">\n\n        {{this.bookingDetails.location}}\n\n      </p>\n\n    </ion-item>\n\n    <ion-item\n\n      color="none"\n\n      id="makeBooking-list-item21"\n\n      class="booking-details-each"\n\n    >\n\n      <ion-label class="label-text" color="black">Date</ion-label>\n\n      <ion-datetime\n\n        displayFormat="DD MMM YYYY"\n\n        class="label-detail label-date"\n\n        color="black"\n\n        [(ngModel)]="date"\n\n        (ionChange)="updateMyDate($event)"\n\n      ></ion-datetime>\n\n    </ion-item>\n\n    <ion-item\n\n      color="none"\n\n      id="makeBooking-list-item22"\n\n      class="booking-details-each"\n\n    >\n\n      <ion-label class="label-text" color="black">Time</ion-label>\n\n      <ion-select\n\n        okText="Okay"\n\n        cancelText="Cancel"\n\n        placeholder="Select a time"\n\n        class="select-field"\n\n        (ionChange)="updateMyTime($event)"\n\n      >\n\n        <ion-option value="13:00:00">1300 - 1500</ion-option>\n\n        <ion-option value="16:00:00">1600 - 1800</ion-option>\n\n        <ion-option value="19:00:00">1900 - 2100</ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n    <ion-item\n\n      color="none"\n\n      id="makeBooking-list-item24"\n\n      class="booking-details-each"\n\n    >\n\n      <ion-label class="label-text" color="black">Pax</ion-label>\n\n      <ion-select\n\n        value="1"\n\n        okText="Okay"\n\n        cancelText="Cancel"\n\n        placeholder="How many pax"\n\n        class="select-field"\n\n        (ionChange)="updateMyPax($event)"\n\n      >\n\n        <ion-option value="1">1</ion-option>\n\n        <ion-option value="2">2</ion-option>\n\n        <ion-option value="3">3</ion-option>\n\n        <ion-option value="4">4</ion-option>\n\n        <ion-option value="5">5</ion-option>\n\n        <ion-option value="6">6</ion-option>\n\n      </ion-select>\n\n    </ion-item>\n\n    <ion-item\n\n      color="none"\n\n      id="makeBooking-list-item25"\n\n      class="booking-details-each ion-textarea-con"\n\n    >\n\n      <ion-label class="label-text" color="black">Notes</ion-label>\n\n      <ion-textarea\n\n        class="ion-textarea-element"\n\n        (input)="updateMyNotes($event.target.value)"\n\n        placeholder="Indicate your preferences..."\n\n        maxlength="100"\n\n        (keyup)="countChar($event)"\n\n      ></ion-textarea>\n\n    </ion-item>\n\n    <ion-item class="characters-indicator">\n\n      <p><span class="amount">0</span>/100 characters</p>\n\n    </ion-item>\n\n  </ion-list>\n\n  <div class="make-booking-cta">\n\n    <button\n\n      id="makeBooking-button3"\n\n      class="cancel-btn"\n\n      ion-button\n\n      outline\n\n      color="black"\n\n      (click)="cancelBooking()"\n\n    >\n\n      Cancel\n\n    </button>\n\n    <button\n\n      id="makeBooking-button4"\n\n      ion-button\n\n      color="yellow"\n\n      (click)="makeBooking()"\n\n    >\n\n      Confirm\n\n    </button>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\make-booking\make-booking.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -3107,7 +2988,7 @@ var MakeBookingPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cust_ongoing_bookings_cust_ongoing_bookings__ = __webpack_require__(232);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__cust_past_bookings_cust_past_bookings__ = __webpack_require__(235);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_Cust_bookingData__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_Cust_bookingData__ = __webpack_require__(46);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3140,7 +3021,7 @@ var CustBookingsPage = /** @class */ (function () {
     };
     CustBookingsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-cust-bookings',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\cust-bookings\cust-bookings.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Bookings\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page3">\n\n  <ion-list id="bookings-list8">\n\n    <ion-item color="none" id="bookings-list-item17" on-click="goToCOnBook()">\n\n      Ongoing\n\n      <ion-icon name="arrow-forward" item-right></ion-icon>\n\n    </ion-item>\n\n    <ion-item color="none" id="bookings-list-item18" on-click="goToCPBook()">\n\n      Past\n\n      <ion-icon name="arrow-forward" item-right></ion-icon>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\cust-bookings\cust-bookings.html"*/
+            selector: 'page-cust-bookings',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\cust-bookings\cust-bookings.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Bookings\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page3">\n\n  <ion-list id="bookings-list8">\n\n    <ion-item color="none" id="bookings-list-item17" on-click="goToCOnBook()">\n\n      Ongoing\n\n      <ion-icon name="arrow-forward" item-right></ion-icon>\n\n    </ion-item>\n\n    <ion-item color="none" id="bookings-list-item18" on-click="goToCPBook()">\n\n      History\n\n      <ion-icon name="arrow-forward" item-right></ion-icon>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\cust-bookings\cust-bookings.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_4__providers_Cust_bookingData__["a" /* CustBookData */]])
     ], CustBookingsPage);
@@ -3158,9 +3039,10 @@ var CustBookingsPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustOngoingBookingsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cust_booking_details_cust_booking_details__ = __webpack_require__(233);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_Cust_bookingData__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__cust_booking_details_cust_booking_details__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common_http__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3172,94 +3054,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-// import { CustBookData } from '../../providers/Cust-bookingData';
 
 
 
+
+//import { Observable } from "rxjs";
 var CustOngoingBookingsPage = /** @class */ (function () {
     // this tells the tabs component which Pages should be each tab's root Page
-    function CustOngoingBookingsPage(navCtrl, http, navParams, storage) {
+    function CustOngoingBookingsPage(navCtrl, http, navParams, storage, custBookData) {
         this.navCtrl = navCtrl;
         this.http = http;
         this.navParams = navParams;
         this.storage = storage;
-        this.hideCard = false;
+        this.custBookData = custBookData;
     }
     CustOngoingBookingsPage.prototype.ionViewWillEnter = function () {
-        this.getCustBookings();
-    };
-    CustOngoingBookingsPage.prototype.getCustBookings = function () {
         var _this = this;
-        var url = "https://foodie1234.herokuapp.com/getCustBookings";
-        this.data = this.http.get(url);
-        this.subscription = this.data.subscribe(function (data) {
-            _this.custBookings = data;
-            console.log(data);
+        this.cBooks = this.navParams.get('data');
+        this.storage.get('CUSTBook').then(function (val) {
+            _this.cBooks = val;
+            console.log("Ongoing", _this.cBooks);
+            console.log('Get Customer Ongoing Bookings');
         });
     };
-    // getOnBook() {
-    //   console.log("entered", "here");
-    //   var url = 'https://foodie1234.herokuapp.com/getCustBookings';
-    //   var postData = JSON.stringify({
-    //     // post data MUSt match the request.body.userID;
-    //     bookingID: localStorage.getItem("loginid")
-    //   });
-    //   const httpOptions = {
-    //     headers: new HttpHeaders({
-    //       'Content-Type':  'application/json',
-    //       'Access-Control-Allow-Origin': '*',
-    //       'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE'
-    //     })
-    //   };
-    //   this.http.post(url, postData, httpOptions).subscribe((data) => {
-    //     console.log('postData:', postData);
-    //     console.log("ongoing", data);
-    //     this.cBooks = data;
-    //   }, error => {
-    //     console.log(error);
-    //   });
-    // }
-    // ionViewWillEnter() {
-    //   let id = localStorage.getItem('loginid');
-    //   console.log("getcustid", id);
-    //   this.storage.get('CUSTBook').then((val) => {
-    //     console.log(val);
-    //     this.cBooks = val;
-    //     for (var i=0;i<this.cBooks.length;i++){
-    //       if (this.cBooks[i].custID == id){
-    //         this.custBook = this.cBooks[i];
-    //       }
-    //     }
-    //     console.log('Get Ongoing Bookings completed');
-    //     console.log(this.custBook);
-    //   });
-    // }
-    // ionViewWillEnter(){
-    //   this.cBooks = this.navParams.get('data');
-    //   this.storage.get('CUSTBook').then((val) => {
-    //     if (val[0].bookID == 0 || val[0].bookID == null) {
-    //       this.hideCard = true;
-    //     }
-    //     console.log("hideCardStat", this.hideCard);
-    //     this.cBooks = val;
-    //     console.log("Ongoing", this.cBooks);
-    //     console.log('Get Customer Ongoing Bookings');
-    //   });
-    // }
     //to push Booking Details page after selecting on specific bookings
     CustOngoingBookingsPage.prototype.goToCustBookDetails = function (bookItem) {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__cust_booking_details_cust_booking_details__["a" /* CustBookingDetailsPage */], {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__cust_booking_details_cust_booking_details__["a" /* CustBookingDetailsPage */], {
             data: bookItem
         });
     };
     CustOngoingBookingsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: "page-cust-ongoing-bookings",template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\cust-ongoing-bookings\cust-ongoing-bookings.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Ongoing Bookings\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page11">\n\n  <ion-card id="ongoingBookings-card22" *ngFor = "let bookItem of cBooks" (click)="goToCustBookDetails(bookItem)">\n\n    <ion-list>\n\n      <ion-item color="none" id="ongoingBookings-list-item61">\n\n        <ion-avatar item-left>\n\n          <img src="{{bookItem?.img}}" />\n\n        </ion-avatar>\n\n        <h2>\n\n          {{bookItem?.fName}}\n\n        </h2>\n\n        <ion-icon name="arrow-forward" item-right></ion-icon>\n\n      </ion-item>\n\n      <ion-item color="none" id="ongoingBookings-list-item62">\n\n        <ion-icon name="calendar" item-left></ion-icon>\n\n        {{bookItem?.bookDate}}, {{bookItem?.bookTime}}\n\n      </ion-item>\n\n      <ion-item color="none" id="ongoingBookings-list-item63">\n\n        <ion-icon name="information-circle" item-left></ion-icon>\n\n        {{bookItem?.bookStatus}}\n\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n</ion-content>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\cust-ongoing-bookings\cust-ongoing-bookings.html"*/
+            selector: "page-cust-ongoing-bookings",template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\cust-ongoing-bookings\cust-ongoing-bookings.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Ongoing Bookings\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page11">\n\n  <ion-card id="ongoingBookings-card22" *ngFor = "let bookItem of cBooks" (click)="goToCustBookDetails(bookItem)">\n\n    <ion-list>\n\n      <ion-item color="none" id="ongoingBookings-list-item61">\n\n        <ion-avatar item-left>\n\n          <img src="{{bookItem?.img}}" />\n\n        </ion-avatar>\n\n        <h2>\n\n          {{bookItem?.fName}}\n\n        </h2>\n\n        <ion-icon name="arrow-forward" item-right></ion-icon>\n\n      </ion-item>\n\n      <ion-item color="none" id="ongoingBookings-list-item62">\n\n        <ion-icon name="calendar" item-left></ion-icon>\n\n        {{bookItem?.bookDate}}, {{bookItem?.bookTime}}\n\n      </ion-item>\n\n      <ion-item color="none" id="ongoingBookings-list-item63">\n\n        <ion-icon name="information-circle" item-left></ion-icon>\n\n        {{bookItem?.bookStatus}}\n\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\cust-ongoing-bookings\cust-ongoing-bookings.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["a" /* HttpClient */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
+            __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_Cust_bookingData__["a" /* CustBookData */]])
     ], CustOngoingBookingsPage);
     return CustOngoingBookingsPage;
 }());
@@ -3272,11 +3104,38 @@ var CustOngoingBookingsPage = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return custBooking; });
+var custBooking = /** @class */ (function () {
+    function custBooking(bookID, fName, img, location, phone, email, bookDate, bookTime, bookPax, bookNotes, bookStatus, menu_image) {
+        this.bookID = bookID;
+        this.fName = fName;
+        this.img = img;
+        this.location = location;
+        this.phone = phone;
+        this.email = email;
+        this.bookDate = bookDate;
+        this.bookTime = bookTime;
+        this.bookPax = bookPax;
+        this.bookNotes = bookNotes;
+        this.bookStatus = bookStatus;
+        this.menu_image = menu_image;
+    }
+    return custBooking;
+}());
+
+//# sourceMappingURL=Cust-Bookings.js.map
+
+/***/ }),
+
+/***/ 234:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustBookingDetailsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cust_reschedule_booking_cust_reschedule_booking__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_Cust_bookingData__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cust_reschedule_booking_cust_reschedule_booking__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_Cust_bookingData__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3302,6 +3161,7 @@ var CustBookingDetailsPage = /** @class */ (function () {
         this.loadingCtrl = loadingCtrl;
         this.alertCtrl = alertCtrl;
         this.http = http;
+        this.totalPrice = 0;
         this.bookItem = navParams.get('data');
         console.log(this.bookItem);
         this.loading = this.loadingCtrl.create({
@@ -3331,6 +3191,10 @@ var CustBookingDetailsPage = /** @class */ (function () {
             console.log('postData:', postData);
             console.log("menuItem", data);
             _this.cBMenuItem = data;
+            for (var i = 0; i < _this.cBMenuItem.length; i++) {
+                _this.totalPrice += _this.cBMenuItem[i].price;
+            }
+            _this.totalPrice = _this.totalPrice * (_this.bookItem.bookPax);
         }, function (error) {
             console.log(error);
         });
@@ -3398,7 +3262,7 @@ var CustBookingDetailsPage = /** @class */ (function () {
     };
     CustBookingDetailsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-cust-booking-details',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\cust-booking-details\cust-booking-details.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Booking Details\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page6">\n\n  <img src="{{bookItem.menu_image}}" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />\n\n  <h2 id="bookingDetails-heading1" style="color:#000000;">\n\n    {{bookItem.fName}}\n\n  </h2>\n\n  <button id="bookingDetails-button5" ion-button color="positive" on-click="goToCustRescheduleBooking()">\n\n    Reschedule\n\n  </button>\n\n  <ion-card id="bookingDetails-card21">\n\n    <ion-list>\n\n      <ion-item color="none" id="pastBookingDetails-list-item76">\n\n        <ion-icon name="calendar" item-left></ion-icon>\n\n        {{bookItem.bookDate}}, {{bookItem.bookTime}}\n\n      </ion-item>\n\n      <ion-item color="none" id="pastBookingDetails-list-item78">\n\n        <ion-icon name="pin" item-left></ion-icon>\n\n        {{bookItem.location}}\n\n      </ion-item>\n\n      <ion-item color="none" id="pastBookingDetails-list-item79">\n\n        <ion-icon name="information-circle" item-left></ion-icon>\n\n        {{bookItem.bookStatus}}\n\n      </ion-item>\n\n      <ion-item color="none" id="pastBookingDetails-list-item97">\n\n        <ion-icon name="people" item-left></ion-icon>\n\n        {{bookItem.bookPax}}\n\n      </ion-item>\n\n      <ion-item color="none" id="pastBookingDetails-list-item98">\n\n        <ion-icon name="create" item-left></ion-icon>\n\n        {{bookItem.bookNotes}}\n\n      </ion-item>\n\n      <ion-item color="none" id="pastBookingDetails-list-item80">\n\n        <ion-icon name="call" item-left></ion-icon>\n\n        {{bookItem.phone}}\n\n      </ion-item>\n\n      <ion-item color="none" id="pastBookingDetails-list-item81">\n\n        <ion-icon name="mail" item-left></ion-icon>\n\n        {{bookItem.email}}\n\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n  <ion-card id="bookingDetails-card26">\n\n    <ion-list>\n\n      <h2 id="bookingDetails-heading8" style="color:#000000;font-weight:400;">\n\n        Menu\n\n      </h2>\n\n      <ion-item color="none" id="bookingDetails-list-item92" *ngFor="let items of cBMenuItem">\n\n        <ion-row style="align-items: flex-start">\n\n          <img src="{{items?.menuImg}}" />\n\n          <p>\n\n            {{items?.menuItem}}\n\n          </p>\n\n          <p item-right>\n\n            {{items?.price}}\n\n          </p>\n\n        </ion-row>\n\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n  <h3 id="bookingDetails-heading2" style="color:#000000;text-align:right;">\n\n    Total Price: ${{bookItem.totalPrice}}\n\n  </h3>\n\n  <button id="bookingDetails-button6" ion-button color="danger" block (click)="confirmAlert()">\n\n    Cancel\n\n  </button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\cust-booking-details\cust-booking-details.html"*/
+            selector: 'page-cust-booking-details',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\cust-booking-details\cust-booking-details.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Booking Details\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page6">\n\n  <img src="{{bookItem.menu_image}}" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />\n\n  <h2 id="bookingDetails-heading1" style="color:#000000;">\n\n    {{bookItem.fName}}\n\n  </h2>\n\n  <ion-card id="bookingDetails-card21">\n\n    <ion-list>\n\n      <ion-item color="none" id="pastBookingDetails-list-item76">\n\n        <ion-icon name="calendar" item-left></ion-icon>\n\n        {{bookItem.bookDate}}, {{bookItem.bookTime}}\n\n      </ion-item>\n\n      <ion-item color="none" id="pastBookingDetails-list-item78">\n\n        <ion-icon name="pin" item-left></ion-icon>\n\n        {{bookItem.location}}\n\n      </ion-item>\n\n      <ion-item color="none" id="pastBookingDetails-list-item79">\n\n        <ion-icon name="information-circle" item-left></ion-icon>\n\n        {{bookItem.bookStatus}}\n\n      </ion-item>\n\n      <ion-item color="none" id="pastBookingDetails-list-item97">\n\n        <ion-icon name="people" item-left></ion-icon>\n\n        {{bookItem.bookPax}}\n\n      </ion-item>\n\n      <ion-item color="none" id="pastBookingDetails-list-item98">\n\n        <ion-icon name="create" item-left></ion-icon>\n\n        {{bookItem.bookNotes}}\n\n      </ion-item>\n\n      <ion-item color="none" id="pastBookingDetails-list-item80">\n\n        <ion-icon name="call" item-left></ion-icon>\n\n        {{bookItem.phone}}\n\n      </ion-item>\n\n      <ion-item color="none" id="pastBookingDetails-list-item81">\n\n        <ion-icon name="mail" item-left></ion-icon>\n\n        {{bookItem.email}}\n\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n  <h5 style="color:#000000;font-size:1.6rem;">\n\n    Menu\n\n  </h5>\n\n  <ion-list class="menu-list">\n\n    <ion-item\n\n      color="none"\n\n      class="menu-item-each active"\n\n      *ngFor="let items of cBMenuItem"\n\n    >\n\n      <img src="{{items?.menuImg}}" alt="" (click)="popupImage($event)" />\n\n      <p ion-text color="black">{{items?.menuItem}}</p>\n\n      <p ion-text color="black">${{items?.price | number:\'1.2-2\'}}</p>\n\n    </ion-item>\n\n  </ion-list>\n\n  <h3 id="bookingDetails-heading2" style="color:#000000;text-align:right;">\n\n    Total Price: ${{ totalPrice | number:\'1.2-2\' }}\n\n  </h3>\n\n  <button id="bookingDetails-button6" ion-button color="danger" block (click)="confirmAlert()">\n\n    Cancel\n\n  </button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\cust-booking-details\cust-booking-details.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_Cust_bookingData__["a" /* CustBookData */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["a" /* HttpClient */]])
     ], CustBookingDetailsPage);
@@ -3409,34 +3273,6 @@ var CustBookingDetailsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 234:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return custBooking; });
-var custBooking = /** @class */ (function () {
-    function custBooking(bookID, fName, img, location, phone, email, bookDate, bookTime, bookPax, bookNotes, bookStatus, menu_image, custID) {
-        this.bookID = bookID;
-        this.fName = fName;
-        this.img = img;
-        this.location = location;
-        this.phone = phone;
-        this.email = email;
-        this.bookDate = bookDate;
-        this.bookTime = bookTime;
-        this.bookPax = bookPax;
-        this.bookNotes = bookNotes;
-        this.bookStatus = bookStatus;
-        this.menu_image = menu_image;
-        this.custID = custID;
-    }
-    return custBooking;
-}());
-
-//# sourceMappingURL=Cust-Bookings.js.map
-
-/***/ }),
-
 /***/ 235:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3444,7 +3280,7 @@ var custBooking = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustPastBookingsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_Cust_pastBookingData__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_Cust_pastBookingData__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__cust_past_booking_details_cust_past_booking_details__ = __webpack_require__(236);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(11);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -3468,19 +3304,14 @@ var CustPastBookingsPage = /** @class */ (function () {
         this.navParams = navParams;
         this.storage = storage;
         this.custPBookData = custPBookData;
-        this.hideCard = false;
     }
     CustPastBookingsPage.prototype.ionViewWillEnter = function () {
         var _this = this;
         this.cPBooks = this.navParams.get('data');
         this.storage.get('CUSTPBook').then(function (val) {
-            if (val[0].bookID == 0 || val[0].bookID == null) {
-                _this.hideCard = true;
-            }
-            console.log("hideCardStat", _this.hideCard);
             _this.cPBooks = val;
             console.log("Past", _this.cPBooks);
-            console.log('Get Customer Ongoing Bookings');
+            console.log('Get Customer Past Bookings');
         });
     };
     //to push Booking Details page after selecting on specific bookings
@@ -3491,7 +3322,7 @@ var CustPastBookingsPage = /** @class */ (function () {
     };
     CustPastBookingsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-cust-past-bookings',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\cust-past-bookings\cust-past-bookings.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Past Bookings\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page12">\n\n  <ion-card id="pastBookings-card23" *ngFor = "let bookItem of cPBooks" (click)="goToCustPBookDetails(bookItem)" [hidden]="hideCard">\n\n    <ion-list>\n\n      <ion-item color="none" id="pastBookings-list-item64">\n\n        <ion-avatar item-left>\n\n          <img src="{{bookItem?.img}}"/>\n\n        </ion-avatar>\n\n        <h2>\n\n          {{bookItem?.fName}}\n\n        </h2>\n\n        <ion-icon name="arrow-forward" item-right></ion-icon>\n\n      </ion-item>\n\n      <ion-item color="none" id="pastBookings-list-item65">\n\n        <ion-icon name="calendar" item-left></ion-icon>\n\n        {{bookItem?.bookDate}}, {{bookItem?.bookTime}}\n\n      </ion-item>\n\n      <ion-item color="none" id="pastBookings-list-item66">\n\n        <ion-icon name="information-circle" item-left></ion-icon>\n\n        {{bookItem?.bookStatus}}\n\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n</ion-content>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\cust-past-bookings\cust-past-bookings.html"*/
+            selector: 'page-cust-past-bookings',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\cust-past-bookings\cust-past-bookings.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Booking History\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page12">\n\n  <ion-card id="pastBookings-card23" *ngFor = "let bookItem of cPBooks" (click)="goToCustPBookDetails(bookItem)" [hidden]="hideCard">\n\n    <ion-list>\n\n      <ion-item color="none" id="pastBookings-list-item64">\n\n        <ion-avatar item-left>\n\n          <img src="{{bookItem?.img}}"/>\n\n        </ion-avatar>\n\n        <h2>\n\n          {{bookItem?.fName}}\n\n        </h2>\n\n        <ion-icon name="arrow-forward" item-right></ion-icon>\n\n      </ion-item>\n\n      <ion-item color="none" id="pastBookings-list-item65">\n\n        <ion-icon name="calendar" item-left></ion-icon>\n\n        {{bookItem?.bookDate}}, {{bookItem?.bookTime}}\n\n      </ion-item>\n\n      <ion-item color="none" id="pastBookings-list-item66">\n\n        <ion-icon name="information-circle" item-left></ion-icon>\n\n        {{bookItem?.bookStatus}}\n\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\cust-past-bookings\cust-past-bookings.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_2__providers_Cust_pastBookingData__["a" /* CustPBookData */]])
     ], CustPastBookingsPage);
@@ -3509,7 +3340,7 @@ var CustPastBookingsPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustPastBookingDetailsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_Cust_pastBookingData__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_Cust_pastBookingData__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3533,6 +3364,7 @@ var CustPastBookingDetailsPage = /** @class */ (function () {
         this.loadingCtrl = loadingCtrl;
         this.custPBookData = custPBookData;
         this.http = http;
+        this.totalPrice = 0;
         this.bookItem = navParams.get('data');
         console.log(this.bookItem);
         this.loading = this.loadingCtrl.create({
@@ -3540,6 +3372,9 @@ var CustPastBookingDetailsPage = /** @class */ (function () {
             content: 'Cancelling'
         });
     }
+    CustPastBookingDetailsPage.prototype.ionViewWillEnter = function () {
+        this.getBMenuItems();
+    };
     CustPastBookingDetailsPage.prototype.getBMenuItems = function () {
         var _this = this;
         console.log("entered", "here");
@@ -3559,13 +3394,17 @@ var CustPastBookingDetailsPage = /** @class */ (function () {
             console.log('postData:', postData);
             console.log("menuItem", data);
             _this.cBPMenuItem = data;
+            for (var i = 0; i < _this.cBPMenuItem.length; i++) {
+                _this.totalPrice += _this.cBPMenuItem[i].price;
+            }
+            _this.totalPrice = _this.totalPrice * (_this.bookItem.bookPax);
         }, function (error) {
             console.log(error);
         });
     };
     CustPastBookingDetailsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-cust-past-booking-details',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\cust-past-booking-details\cust-past-booking-details.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Booking Details\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page6">\n\n  <img src="{{bookItem.menu_image}}" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />\n\n  <h2 id="bookingDetails-heading1" style="color:#000000;">\n\n    {{bookItem.fName}}\n\n  </h2>\n\n  <ion-card id="bookingDetails-card21">\n\n    <ion-list>\n\n      <ion-item color="none" id="bookingDetails-list-item69">\n\n        <ion-icon name="calendar" item-left></ion-icon>\n\n        {{bookItem.bookDate}}, {{bookItem.bookTime}}\n\n      </ion-item>\n\n      <ion-item color="none" id="bookingDetails-list-item71">\n\n        <ion-icon name="pin" item-left></ion-icon>\n\n        {{bookItem.location}}\n\n      </ion-item>\n\n      <ion-item color="none" id="bookingDetails-list-item72">\n\n        <ion-icon name="information-circle" item-left></ion-icon>\n\n        {{bookItem.bookStatus}}\n\n      </ion-item>\n\n      <ion-item color="none" id="bookingDetails-list-item73">\n\n        <ion-icon name="call" item-left></ion-icon>\n\n        {{bookItem.phone}}\n\n      </ion-item>\n\n      <ion-item color="none" id="bookingDetails-list-item74">\n\n        <ion-icon name="mail" item-left></ion-icon>\n\n        {{bookItem.email}}\n\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n  <ion-card id="pastBookingDetails-card25">\n\n    <ion-list>\n\n      <h3 id="pastBookingDetails-heading9" style="color:#000000;font-weight:400;">\n\n        Menu\n\n      </h3>\n\n      <ion-item color="none" id="pastBookingDetails-list-item99" *ngFor="let items of cBPMenuItem">\n\n        <ion-row style="align-items: flex-start">\n\n          <img src="{{items?.menuImg}}" />\n\n          <p>\n\n            {{items?.menuItem}}\n\n          </p>\n\n          <p item-right>\n\n            {{items?.price}}\n\n          </p>\n\n        </ion-row>\n\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n  <h3 id="bookingDetails-heading2" style="color:#000000;text-align:right;">\n\n    Total Price: ${{bookItem.totalPrice}}\n\n  </h3>\n\n</ion-content>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\cust-past-booking-details\cust-past-booking-details.html"*/
+            selector: 'page-cust-past-booking-details',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\cust-past-booking-details\cust-past-booking-details.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Booking Details\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page6">\n\n  <img src="{{bookItem.menu_image}}" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />\n\n  <h2 id="bookingDetails-heading1" style="color:#000000;">\n\n    {{bookItem.fName}}\n\n  </h2>\n\n  <ion-card id="bookingDetails-card21">\n\n    <ion-list>\n\n      <ion-item color="none" id="bookingDetails-list-item69">\n\n        <ion-icon name="calendar" item-left></ion-icon>\n\n        {{bookItem.bookDate}}, {{bookItem.bookTime}}\n\n      </ion-item>\n\n      <ion-item color="none" id="bookingDetails-list-item71">\n\n        <ion-icon name="pin" item-left></ion-icon>\n\n        {{bookItem.location}}\n\n      </ion-item>\n\n      <ion-item color="none" id="bookingDetails-list-item72">\n\n        <ion-icon name="information-circle" item-left></ion-icon>\n\n        {{bookItem.bookStatus}}\n\n      </ion-item>\n\n      <ion-item color="none" id="bookingDetails-list-item73">\n\n        <ion-icon name="call" item-left></ion-icon>\n\n        {{bookItem.phone}}\n\n      </ion-item>\n\n      <ion-item color="none" id="bookingDetails-list-item74">\n\n        <ion-icon name="mail" item-left></ion-icon>\n\n        {{bookItem.email}}\n\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n  <h5 style="color:#000000;font-size:1.6rem;">\n\n    Menu\n\n  </h5>\n\n  <ion-list class="menu-list">\n\n    <ion-item\n\n      color="none"\n\n      class="menu-item-each active"\n\n      *ngFor="let items of cBPMenuItem"\n\n    >\n\n      <img src="{{items?.menuImg}}" alt="" (click)="popupImage($event)" />\n\n      <p ion-text color="black">{{items?.menuItem}}</p>\n\n      <p ion-text color="black">${{items?.price | number:\'1.2-2\'}}</p>\n\n    </ion-item>\n\n  </ion-list>\n\n  <h3 id="bookingDetails-heading2" style="color:#000000;text-align:right;">\n\n    Total Price: ${{ totalPrice | number:\'1.2-2\' }}\n\n  </h3>\n\n</ion-content>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\cust-past-booking-details\cust-past-booking-details.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_2__providers_Cust_pastBookingData__["a" /* CustPBookData */], __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */]])
     ], CustPastBookingDetailsPage);
@@ -3602,7 +3441,7 @@ var CustProfilePage = /** @class */ (function () {
     }
     CustProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-profile',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\CUST-profile\profile.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Profile\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page5"></ion-content>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\CUST-profile\profile.html"*/
+            selector: 'page-profile',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\CUST-profile\profile.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Profile\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page5"></ion-content>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\CUST-profile\profile.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]])
     ], CustProfilePage);
@@ -3636,50 +3475,50 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(302);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_PDP_dashboard_PDP_dashboard__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_PDP_bookings_PDP_bookings__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_PDP_menus_PDP_menus__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_PDP_booking_details_PDP_booking_details__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_PDP_dashboard_PDP_dashboard__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_PDP_bookings_PDP_bookings__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_PDP_menus_PDP_menus__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_PDP_booking_details_PDP_booking_details__ = __webpack_require__(112);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_tabs2_tabs2__ = __webpack_require__(319);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_CUST_menuinfo_menuinfo__ = __webpack_require__(119);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_CUST_favourites_favourites__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_CUST_menuinfo_menuinfo__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_CUST_favourites_favourites__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_discover_discover__ = __webpack_require__(229);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_tabs_controller_tabs_controller__ = __webpack_require__(228);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_menu_details_menu_details__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_menu_details_menu_details__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_make_booking_make_booking__ = __webpack_require__(230);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_CUST_menu_menu__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_CUST_reviews_reviews__ = __webpack_require__(118);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_CUST_submitReview_submitReview__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_CUST_reviews_reviews__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_CUST_submitReview_submitReview__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_CUST_tabs_tabs2__ = __webpack_require__(320);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_ionic3_star_rating__ = __webpack_require__(321);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__ionic_native_status_bar__ = __webpack_require__(216);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_splash_screen__ = __webpack_require__(218);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__angular_common_http__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_PDP_bookingData__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_PDP_bookingData__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__ionic_storage__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_PDP_new_menu_PDP_new_menu__ = __webpack_require__(226);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_login_page_login_page__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_login_page_login_page__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__providers_PDP_menuData__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__providers_PDP_profileData__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__providers_PDP_dashboardData__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__providers_PDP_profileData__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__providers_PDP_dashboardData__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__ionic_native_camera_ngx__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pages_PDP_tabs_PDP_tabs__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__pages_PDP_profile_PDP_profile__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__pages_PDP_profile_PDP_profile__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__pages_CUST_profile_profile__ = __webpack_require__(237);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__pages_PDP_menu_PDP_menu__ = __webpack_require__(222);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__pages_PDP_edit_menu_PDP_edit_menu__ = __webpack_require__(224);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__pages_PDP_edit_profile_PDP_edit_profile__ = __webpack_require__(227);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__pages_PDP_new_dish_PDP_new_dish__ = __webpack_require__(223);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__pages_PDP_edit_dish_PDP_edit_dish__ = __webpack_require__(225);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__pages_cust_booking_details_cust_booking_details__ = __webpack_require__(233);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pages_cust_reschedule_booking_cust_reschedule_booking__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__pages_cust_booking_details_cust_booking_details__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pages_cust_reschedule_booking_cust_reschedule_booking__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__pages_cust_past_booking_details_cust_past_booking_details__ = __webpack_require__(236);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__pages_custb_view_menu_custb_view_menu__ = __webpack_require__(323);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__pages_cust_bookings_cust_bookings__ = __webpack_require__(231);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__pages_cust_ongoing_bookings_cust_ongoing_bookings__ = __webpack_require__(232);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__pages_cust_past_bookings_cust_past_bookings__ = __webpack_require__(235);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__providers_Cust_bookingData__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__providers_Cust_pastBookingData__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__providers_Cust_bookingData__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__providers_Cust_pastBookingData__ = __webpack_require__(58);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3889,7 +3728,7 @@ var AppModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(216);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_login_page_login_page__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_login_page_login_page__ = __webpack_require__(110);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3915,7 +3754,7 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\app\app.html"*/'<ion-nav #mainContent [root]="rootPage"></ion-nav>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\app\app.html"*/'<ion-nav #mainContent [root]="rootPage"></ion-nav>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
@@ -4075,7 +3914,7 @@ var Profile = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Tabs2Page; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CUST_favourites_favourites__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CUST_favourites_favourites__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CUST_menu_menu__ = __webpack_require__(123);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -4100,7 +3939,7 @@ var Tabs2Page = /** @class */ (function () {
     }
     Tabs2Page = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-tabs2',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\tabs2\tabs2.html"*/'<ion-tabs id="tabsController-tabs1">\n\n  <ion-tab [root]="tab2Root" tabTitle="" tabIcon="home" id="tabsController-tab3"></ion-tab>\n\n  <ion-tab [root]="tab1Root" tabTitle="" tabIcon="heart" id="tabsController-tab2"></ion-tab>\n\n</ion-tabs>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\tabs2\tabs2.html"*/
+            selector: 'page-tabs2',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\tabs2\tabs2.html"*/'<ion-tabs id="tabsController-tabs1">\n\n  <ion-tab [root]="tab2Root" tabTitle="" tabIcon="home" id="tabsController-tab3"></ion-tab>\n\n  <ion-tab [root]="tab1Root" tabTitle="" tabIcon="heart" id="tabsController-tab2"></ion-tab>\n\n</ion-tabs>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\tabs2\tabs2.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]])
     ], Tabs2Page);
@@ -4118,7 +3957,7 @@ var Tabs2Page = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustTabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CUST_favourites_favourites__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CUST_favourites_favourites__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CUST_menu_menu__ = __webpack_require__(123);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -4143,7 +3982,7 @@ var CustTabsPage = /** @class */ (function () {
     }
     CustTabsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-tabs2',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\CUST-tabs\tabs2.html"*/'<ion-tabs id="tabsController-tabs1">\n\n  <ion-tab [root]="tab2Root" tabTitle="" tabIcon="home" id="tabsController-tab3"></ion-tab>\n\n  <ion-tab [root]="tab1Root" tabTitle="" tabIcon="heart" id="tabsController-tab2"></ion-tab>\n\n</ion-tabs>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\CUST-tabs\tabs2.html"*/
+            selector: 'page-tabs2',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\CUST-tabs\tabs2.html"*/'<ion-tabs id="tabsController-tabs1">\n\n  <ion-tab [root]="tab2Root" tabTitle="" tabIcon="home" id="tabsController-tab3"></ion-tab>\n\n  <ion-tab [root]="tab1Root" tabTitle="" tabIcon="heart" id="tabsController-tab2"></ion-tab>\n\n</ion-tabs>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\CUST-tabs\tabs2.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]])
     ], CustTabsPage);
@@ -4161,7 +4000,7 @@ var CustTabsPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustbViewMenuPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cust_reschedule_booking_cust_reschedule_booking__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cust_reschedule_booking_cust_reschedule_booking__ = __webpack_require__(122);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4187,7 +4026,7 @@ var CustbViewMenuPage = /** @class */ (function () {
     };
     CustbViewMenuPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-custb-view-menu',template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\custb-view-menu\custb-view-menu.html"*/'<ion-header>\n\n    <ion-navbar>\n\n      <ion-title>\n\n        View Menu\n\n      </ion-title>\n\n    </ion-navbar>\n\n  </ion-header>\n\n  <ion-content padding id="page9">\n\n    <ion-list id="custbViewMenu-list12">\n\n      <ion-item color="none" id="custbViewMenu-list-item41">\n\n        Monday\n\n        <ion-icon name="arrow-dropdown" item-right></ion-icon>\n\n      </ion-item>\n\n      <ion-item color="none" id="custbViewMenu-list-item44">\n\n        Tuesday\n\n        <ion-icon name="arrow-dropdown" item-right></ion-icon>\n\n      </ion-item>\n\n      <ion-item color="none" id="custbViewMenu-list-item45">\n\n        Wednesday\n\n        <ion-icon name="arrow-dropdown" item-right></ion-icon>\n\n      </ion-item>\n\n      <ion-item color="none" id="custbViewMenu-list-item46">\n\n        Thursday\n\n        <ion-icon name="arrow-dropdown" item-right></ion-icon>\n\n      </ion-item>\n\n      <ion-item color="none" id="custbViewMenu-list-item47">\n\n        Friday\n\n        <ion-icon name="arrow-dropdown" item-right></ion-icon>\n\n      </ion-item>\n\n      <ion-item color="none" id="custbViewMenu-list-item48">\n\n        Saturday\n\n        <ion-icon name="arrow-dropdown" item-right></ion-icon>\n\n      </ion-item>\n\n      <ion-item color="none" on-click="goToCustRescheduleBooking()" id="custbViewMenu-list-item49">\n\n        Sunday\n\n        <ion-icon name="arrow-dropdown" item-right></ion-icon>\n\n      </ion-item>\n\n    </ion-list>\n\n  </ion-content>'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\custb-view-menu\custb-view-menu.html"*/
+            selector: 'page-custb-view-menu',template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\custb-view-menu\custb-view-menu.html"*/'<ion-header>\n\n    <ion-navbar>\n\n      <ion-title>\n\n        View Menu\n\n      </ion-title>\n\n    </ion-navbar>\n\n  </ion-header>\n\n  <ion-content padding id="page9">\n\n    <ion-list id="custbViewMenu-list12">\n\n      <ion-item color="none" id="custbViewMenu-list-item41">\n\n        Monday\n\n        <ion-icon name="arrow-dropdown" item-right></ion-icon>\n\n      </ion-item>\n\n      <ion-item color="none" id="custbViewMenu-list-item44">\n\n        Tuesday\n\n        <ion-icon name="arrow-dropdown" item-right></ion-icon>\n\n      </ion-item>\n\n      <ion-item color="none" id="custbViewMenu-list-item45">\n\n        Wednesday\n\n        <ion-icon name="arrow-dropdown" item-right></ion-icon>\n\n      </ion-item>\n\n      <ion-item color="none" id="custbViewMenu-list-item46">\n\n        Thursday\n\n        <ion-icon name="arrow-dropdown" item-right></ion-icon>\n\n      </ion-item>\n\n      <ion-item color="none" id="custbViewMenu-list-item47">\n\n        Friday\n\n        <ion-icon name="arrow-dropdown" item-right></ion-icon>\n\n      </ion-item>\n\n      <ion-item color="none" id="custbViewMenu-list-item48">\n\n        Saturday\n\n        <ion-icon name="arrow-dropdown" item-right></ion-icon>\n\n      </ion-item>\n\n      <ion-item color="none" on-click="goToCustRescheduleBooking()" id="custbViewMenu-list-item49">\n\n        Sunday\n\n        <ion-icon name="arrow-dropdown" item-right></ion-icon>\n\n      </ion-item>\n\n    </ion-list>\n\n  </ion-content>'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\custb-view-menu\custb-view-menu.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]])
     ], CustbViewMenuPage);
@@ -4198,7 +4037,59 @@ var CustbViewMenuPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 55:
+/***/ 46:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustBookData; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_Cust_Bookings__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(11);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var CustBookData = /** @class */ (function () {
+    function CustBookData(http, storage) {
+        this.http = http;
+        this.storage = storage;
+    }
+    CustBookData.prototype.getBookData = function () {
+        var _this = this;
+        var custBook = [];
+        console.log("In /getCustBook");
+        var url = 'https://foodie1234.herokuapp.com/getCustBook';
+        this.data = this.http.get(url);
+        this.data.subscribe(function (data) {
+            _this.result = data;
+            for (var i = 0; i < _this.result.length; i++) {
+                custBook.push(new __WEBPACK_IMPORTED_MODULE_2__models_Cust_Bookings__["a" /* custBooking */](_this.result[i].bookID, _this.result[i].fName, _this.result[i].img, _this.result[i].location, _this.result[i].phone, _this.result[i].email, _this.result[i].bookDate, _this.result[i].bookTime, _this.result[i].bookPax, _this.result[i].bookNotes, _this.result[i].bookStatus, _this.result[i].menu_image));
+            }
+            _this.storage.set('CUSTBook', custBook);
+        });
+    };
+    CustBookData = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
+    ], CustBookData);
+    return CustBookData;
+}());
+
+//# sourceMappingURL=Cust-bookingData.js.map
+
+/***/ }),
+
+/***/ 56:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4298,7 +4189,7 @@ var MenusPage = /** @class */ (function () {
     };
     MenusPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: "page-PDP-menus",template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-menus\PDP-menus.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-buttons start>\n\n      <button ion-button icon-left solid (click)="goToNewMenu()">\n\n        <ion-icon name="add"></ion-icon>\n\n        New Menu\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-title>\n\n      Menus\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page4" (window:resize)="resizeEvent($event)">\n\n  <div class="menu-cards-con">\n\n    <ion-card\n\n      id="menus-card28"\n\n      *ngFor="let menu of menus"\n\n      class="menu-card-each"\n\n    >\n\n      <ion-list>\n\n        <img src="{{ menu?.menuImg }}" class="menu-card-img" />\n\n        <div\n\n          *ngIf=\'menu?.menuImg == ""\'\n\n          style="width:100%;height:177px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;"\n\n        >\n\n          <i\n\n            class="icon ion-image"\n\n            style="font-size:64px;color:#888;vertical-align:middle;"\n\n          ></i>\n\n        </div>\n\n        <ion-item color="none" id="menus-list-item61">\n\n          {{ menu?.menuName }}\n\n        </ion-item>\n\n        <button\n\n          id="menus-button4"\n\n          class="manage-menu-btn"\n\n          ion-button\n\n          clear\n\n          color="positive"\n\n          block\n\n          on-click="goToMenu(menu)"\n\n        >\n\n          Manage Menu\n\n        </button>\n\n      </ion-list>\n\n    </ion-card>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\PDP-menus\PDP-menus.html"*/
+            selector: "page-PDP-menus",template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-menus\PDP-menus.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-buttons start>\n\n      <button ion-button icon-left solid (click)="goToNewMenu()">\n\n        <ion-icon name="add"></ion-icon>\n\n        New Menu\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-title>\n\n      Menus\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="page4" (window:resize)="resizeEvent($event)">\n\n  <div class="menu-cards-con">\n\n    <ion-card\n\n      id="menus-card28"\n\n      *ngFor="let menu of menus"\n\n      class="menu-card-each"\n\n    >\n\n      <ion-list>\n\n        <img src="{{ menu?.menuImg }}" class="menu-card-img" />\n\n        <div\n\n          *ngIf=\'menu?.menuImg == ""\'\n\n          style="width:100%;height:177px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;"\n\n        >\n\n          <i\n\n            class="icon ion-image"\n\n            style="font-size:64px;color:#888;vertical-align:middle;"\n\n          ></i>\n\n        </div>\n\n        <ion-item color="none" id="menus-list-item61">\n\n          {{ menu?.menuName }}\n\n        </ion-item>\n\n        <button\n\n          id="menus-button4"\n\n          class="manage-menu-btn"\n\n          ion-button\n\n          clear\n\n          color="positive"\n\n          block\n\n          on-click="goToMenu(menu)"\n\n        >\n\n          Manage Menu\n\n        </button>\n\n      </ion-list>\n\n    </ion-card>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\PDP-menus\PDP-menus.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */]])
     ], MenusPage);
@@ -4309,7 +4200,7 @@ var MenusPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 56:
+/***/ 57:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4317,9 +4208,9 @@ var MenusPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CUST_menuinfo_menuinfo__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CUST_menuinfo_menuinfo__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__menu_details_menu_details__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__menu_details_menu_details__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jquery__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_jquery__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -4464,7 +4355,7 @@ var CustFavouritesPage = /** @class */ (function () {
     };
     CustFavouritesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: "page-favourites",template:/*ion-inline-start:"C:\Users\19B759H\Desktop\elp\src\pages\CUST-favourites\favourites.html"*/'<!--\n\n  Generated template for the FavouritesPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>Favourites</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<!-- <ion-content style="width:100%;" [hidden]="ishidden">\n\n  <ion-list>\n\n    <ion-item *ngFor="let menu of favs" >\n\n      <ion-label class="fulllabel" >\n\n        <button class="wholebutton" item-right (click)="goToMenuPage(menu.menuId)">\n\n          <h3 text-left>{{menu.fName}} </h3>\n\n          <p text-left style="color:grey;">{{menu.menuName}} </p>\n\n          <p text-left>{{menu.menu_category}} </p>\n\n        </button>\n\n      </ion-label>\n\n    </ion-item>\n\n  </ion-list>\n\n\n\n</ion-content>\n\n<ion-content style="width:100%;" [hidden]="ishiddenimg">\n\n  <ion-label class="fulllabel" >\n\n    <img src="../../assets/imgs/fav_ss.jpg"/>\n\n    </ion-label>\n\n</ion-content> -->\n\n<ion-content\n\n  padding\n\n  id="page2"\n\n  [hidden]="ishidden"\n\n  (window:resize)="resizeEvent($event)"\n\n>\n\n  <ion-card\n\n    id="discover-card21"\n\n    class="discover-card-each"\n\n    *ngFor="let profile of favs"\n\n  >\n\n    <ion-list>\n\n      <ion-item color="none" id="discover-list-item3">\n\n        <ion-avatar item-left>\n\n          <img src="{{profile.img}}" />\n\n        </ion-avatar>\n\n        <h2\n\n          style="margin-bottom:0;font-weight:500;"\n\n          (click)="goToMenuDetailsPage($event, profile)"\n\n        >\n\n          {{profile.fName}}\n\n        </h2>\n\n      </ion-item>\n\n      <div class="favourites-image">\n\n        <img src="{{profile.menu_image}}" alt="" />\n\n      </div>\n\n      <div class="discover-info">\n\n        <h5\n\n          id="discover-heading2"\n\n          class="discover-menuname"\n\n          style="color:#424242;font-weight:600;font-size:1.6rem;"\n\n          (click)="goToMenuDetailsPage($event, profile)"\n\n        >\n\n          {{profile.menuName}}\n\n        </h5>\n\n        <div class="show-list-numbers-and-dots" style="display:flex;align-items:center;margin-bottom:5px;">\n\n          <ion-icon name="list-box" style="color:#929292;width:15px;text-align:center;"></ion-icon>\n\n          <p style="color:#000000;margin-left:7px;margin-bottom:0;font-size:1.4rem;">\n\n            ~${{profile.menu_price}}/pax\n\n          </p>\n\n        </div>\n\n        <div id="discover-markdown3" class="show-list-numbers-and-dots" style="display:flex;align-items:center;margin-bottom:5px;">\n\n          <ion-icon name="pin" style="color:#929292;width:15px;text-align:center;"></ion-icon>\n\n          <p style="color:#000000;margin-left:7px;margin-bottom:0;font-size:1.4rem;">\n\n            {{profile.location}}\n\n          </p>\n\n        </div>\n\n        <div id="discover-markdown4" class="show-list-numbers-and-dots" style="display:flex;align-items:center;margin-bottom:5px;">\n\n          <ion-icon name="pricetag" style="color:#929292;width:15px;text-align:center;"></ion-icon>\n\n          <p style="color:#000000;margin-left:7px;margin-bottom:0;font-size:1.4rem;">\n\n            {{profile.menu_category}}\n\n          </p>\n\n        </div>\n\n        <div class="discover-ratings" >\n\n          <span\n\n            class="each-star"\n\n            [ngClass]="{\'active\' : profile.avgRating > 0}"\n\n          >\n\n            <svg\n\n              xmlns="http://www.w3.org/2000/svg"\n\n              width="24"\n\n              height="24"\n\n              viewBox="0 0 24 24"\n\n            >\n\n              <path\n\n                d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524-4.721 2.525.942-5.27-3.861-3.71 5.305-.733 2.335-4.817zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"\n\n              />\n\n            </svg>\n\n          </span>\n\n          <span\n\n            class="each-star"\n\n            [ngClass]="{\'active\' : profile.avgRating > 1}"\n\n          >\n\n            <svg\n\n              xmlns="http://www.w3.org/2000/svg"\n\n              width="24"\n\n              height="24"\n\n              viewBox="0 0 24 24"\n\n            >\n\n              <path\n\n                d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524-4.721 2.525.942-5.27-3.861-3.71 5.305-.733 2.335-4.817zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"\n\n              />\n\n            </svg>\n\n          </span>\n\n          <span\n\n            class="each-star"\n\n            [ngClass]="{\'active\' : profile.avgRating > 2}"\n\n          >\n\n            <svg\n\n              xmlns="http://www.w3.org/2000/svg"\n\n              width="24"\n\n              height="24"\n\n              viewBox="0 0 24 24"\n\n            >\n\n              <path\n\n                d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524-4.721 2.525.942-5.27-3.861-3.71 5.305-.733 2.335-4.817zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"\n\n              />\n\n            </svg>\n\n          </span>\n\n          <span\n\n            class="each-star"\n\n            [ngClass]="{\'active\' : profile.avgRating > 3}"\n\n          >\n\n            <svg\n\n              xmlns="http://www.w3.org/2000/svg"\n\n              width="24"\n\n              height="24"\n\n              viewBox="0 0 24 24"\n\n            >\n\n              <path\n\n                d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524-4.721 2.525.942-5.27-3.861-3.71 5.305-.733 2.335-4.817zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"\n\n              />\n\n            </svg>\n\n          </span>\n\n          <span\n\n            class="each-star"\n\n            [ngClass]="{\'active\' : profile.avgRating > 4}"\n\n          >\n\n            <svg\n\n              xmlns="http://www.w3.org/2000/svg"\n\n              width="24"\n\n              height="24"\n\n              viewBox="0 0 24 24"\n\n            >\n\n              <path\n\n                d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524-4.721 2.525.942-5.27-3.861-3.71 5.305-.733 2.335-4.817zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"\n\n              />\n\n            </svg>\n\n          </span>\n\n          <span class="rating-amount">{{profile.totalReviews}} reviews</span>\n\n        </div>\n\n      </div>\n\n    </ion-list>\n\n  </ion-card>\n\n</ion-content>\n\n<ion-content style="width:100%;" [hidden]="ishiddenimg">\n\n  <ion-label class="fulllabel">\n\n    <img src="../../assets/imgs/fav_ss.jpg" />\n\n  </ion-label>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\19B759H\Desktop\elp\src\pages\CUST-favourites\favourites.html"*/
+            selector: "page-favourites",template:/*ion-inline-start:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\CUST-favourites\favourites.html"*/'<!--\n\n  Generated template for the FavouritesPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>Favourites</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<!-- <ion-content style="width:100%;" [hidden]="ishidden">\n\n  <ion-list>\n\n    <ion-item *ngFor="let menu of favs" >\n\n      <ion-label class="fulllabel" >\n\n        <button class="wholebutton" item-right (click)="goToMenuPage(menu.menuId)">\n\n          <h3 text-left>{{menu.fName}} </h3>\n\n          <p text-left style="color:grey;">{{menu.menuName}} </p>\n\n          <p text-left>{{menu.menu_category}} </p>\n\n        </button>\n\n      </ion-label>\n\n    </ion-item>\n\n  </ion-list>\n\n\n\n</ion-content>\n\n<ion-content style="width:100%;" [hidden]="ishiddenimg">\n\n  <ion-label class="fulllabel" >\n\n    <img src="../../assets/imgs/fav_ss.jpg"/>\n\n    </ion-label>\n\n</ion-content> -->\n\n<ion-content\n\n  padding\n\n  id="page2"\n\n  [hidden]="ishidden"\n\n  (window:resize)="resizeEvent($event)"\n\n>\n\n  <ion-card\n\n    id="discover-card21"\n\n    class="discover-card-each"\n\n    *ngFor="let profile of favs"\n\n  >\n\n    <ion-list>\n\n      <ion-item color="none" id="discover-list-item3">\n\n        <ion-avatar item-left>\n\n          <img src="{{profile.img}}" />\n\n        </ion-avatar>\n\n        <h2\n\n          style="margin-bottom:0;font-weight:500;"\n\n          (click)="goToMenuDetailsPage($event, profile)"\n\n        >\n\n          {{profile.fName}}\n\n        </h2>\n\n      </ion-item>\n\n      <div class="favourites-image">\n\n        <img src="{{profile.menu_image}}" alt="" />\n\n      </div>\n\n      <div class="discover-info">\n\n        <h5\n\n          id="discover-heading2"\n\n          class="discover-menuname"\n\n          style="color:#424242;font-weight:600;font-size:1.6rem;"\n\n          (click)="goToMenuDetailsPage($event, profile)"\n\n        >\n\n          {{profile.menuName}}\n\n        </h5>\n\n        <div class="show-list-numbers-and-dots" style="display:flex;align-items:center;margin-bottom:5px;">\n\n          <ion-icon name="list-box" style="color:#929292;width:15px;text-align:center;"></ion-icon>\n\n          <p style="color:#000000;margin-left:7px;margin-bottom:0;font-size:1.4rem;">\n\n            ~${{profile.menu_price}}/pax\n\n          </p>\n\n        </div>\n\n        <div id="discover-markdown3" class="show-list-numbers-and-dots" style="display:flex;align-items:center;margin-bottom:5px;">\n\n          <ion-icon name="pin" style="color:#929292;width:15px;text-align:center;"></ion-icon>\n\n          <p style="color:#000000;margin-left:7px;margin-bottom:0;font-size:1.4rem;">\n\n            {{profile.location}}\n\n          </p>\n\n        </div>\n\n        <div id="discover-markdown4" class="show-list-numbers-and-dots" style="display:flex;align-items:center;margin-bottom:5px;">\n\n          <ion-icon name="pricetag" style="color:#929292;width:15px;text-align:center;"></ion-icon>\n\n          <p style="color:#000000;margin-left:7px;margin-bottom:0;font-size:1.4rem;">\n\n            {{profile.menu_category}}\n\n          </p>\n\n        </div>\n\n        <div *ngIf="!profile.avgRating">\n\n            No Reviews Yet\n\n        </div>\n\n        <div class="discover-ratings" *ngIf="profile.avgRating">\n\n          <span\n\n            class="each-star"\n\n            [ngClass]="{\'active\' : profile.avgRating > 0}"\n\n          >\n\n            <svg\n\n              xmlns="http://www.w3.org/2000/svg"\n\n              width="24"\n\n              height="24"\n\n              viewBox="0 0 24 24"\n\n            >\n\n              <path\n\n                d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524-4.721 2.525.942-5.27-3.861-3.71 5.305-.733 2.335-4.817zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"\n\n              />\n\n            </svg>\n\n          </span>\n\n          <span\n\n            class="each-star"\n\n            [ngClass]="{\'active\' : profile.avgRating > 1}"\n\n          >\n\n            <svg\n\n              xmlns="http://www.w3.org/2000/svg"\n\n              width="24"\n\n              height="24"\n\n              viewBox="0 0 24 24"\n\n            >\n\n              <path\n\n                d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524-4.721 2.525.942-5.27-3.861-3.71 5.305-.733 2.335-4.817zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"\n\n              />\n\n            </svg>\n\n          </span>\n\n          <span\n\n            class="each-star"\n\n            [ngClass]="{\'active\' : profile.avgRating > 2}"\n\n          >\n\n            <svg\n\n              xmlns="http://www.w3.org/2000/svg"\n\n              width="24"\n\n              height="24"\n\n              viewBox="0 0 24 24"\n\n            >\n\n              <path\n\n                d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524-4.721 2.525.942-5.27-3.861-3.71 5.305-.733 2.335-4.817zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"\n\n              />\n\n            </svg>\n\n          </span>\n\n          <span\n\n            class="each-star"\n\n            [ngClass]="{\'active\' : profile.avgRating > 3}"\n\n          >\n\n            <svg\n\n              xmlns="http://www.w3.org/2000/svg"\n\n              width="24"\n\n              height="24"\n\n              viewBox="0 0 24 24"\n\n            >\n\n              <path\n\n                d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524-4.721 2.525.942-5.27-3.861-3.71 5.305-.733 2.335-4.817zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"\n\n              />\n\n            </svg>\n\n          </span>\n\n          <span\n\n            class="each-star"\n\n            [ngClass]="{\'active\' : profile.avgRating > 4}"\n\n          >\n\n            <svg\n\n              xmlns="http://www.w3.org/2000/svg"\n\n              width="24"\n\n              height="24"\n\n              viewBox="0 0 24 24"\n\n            >\n\n              <path\n\n                d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524-4.721 2.525.942-5.27-3.861-3.71 5.305-.733 2.335-4.817zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"\n\n              />\n\n            </svg>\n\n          </span>\n\n          <span class="rating-amount">{{profile.totalReviews}} reviews</span>\n\n        </div>\n\n      </div>\n\n    </ion-list>\n\n  </ion-card>\n\n</ion-content>\n\n<ion-content style="width:100%;" [hidden]="ishiddenimg">\n\n  <ion-label class="fulllabel">\n\n    <img src="../../assets/imgs/fav_ss.jpg" />\n\n  </ion-label>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\ASUS\Desktop\ELPProj\ELP\src\pages\CUST-favourites\favourites.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -4476,6 +4367,58 @@ var CustFavouritesPage = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=favourites.js.map
+
+/***/ }),
+
+/***/ 58:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustPBookData; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_Cust_Bookings__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(11);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var CustPBookData = /** @class */ (function () {
+    function CustPBookData(http, storage) {
+        this.http = http;
+        this.storage = storage;
+    }
+    CustPBookData.prototype.getPBookData = function () {
+        var _this = this;
+        var custPBook = [];
+        console.log("In /getCustPastBook");
+        var url = 'https://foodie1234.herokuapp.com/getCustPastBook';
+        this.data = this.http.get(url);
+        this.data.subscribe(function (data) {
+            _this.result = data;
+            for (var i = 0; i < _this.result.length; i++) {
+                custPBook.push(new __WEBPACK_IMPORTED_MODULE_2__models_Cust_Bookings__["a" /* custBooking */](_this.result[i].bookID, _this.result[i].fName, _this.result[i].img, _this.result[i].location, _this.result[i].phone, _this.result[i].email, _this.result[i].bookDate, _this.result[i].bookTime, _this.result[i].bookPax, _this.result[i].bookNotes, _this.result[i].bookStatus, _this.result[i].menu_image));
+            }
+            _this.storage.set('CUSTPBook', custPBook);
+        });
+    };
+    CustPBookData = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
+    ], CustPBookData);
+    return CustPBookData;
+}());
+
+//# sourceMappingURL=Cust-pastBookingData.js.map
 
 /***/ })
 

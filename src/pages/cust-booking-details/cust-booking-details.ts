@@ -14,6 +14,7 @@ export class CustBookingDetailsPage {
   bookItem: any;
   loading: any;
   cBMenuItem: any;
+  totalPrice: any=0;
   // this tells the tabs component which Pages should be each tab's root Page
   constructor(public navCtrl: NavController, public navParams: NavParams, public custBookData: CustBookData, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public http: HttpClient) {
     this.bookItem = navParams.get('data');
@@ -24,7 +25,7 @@ export class CustBookingDetailsPage {
     });
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.getBMenuItems();
   }
 
@@ -48,6 +49,11 @@ export class CustBookingDetailsPage {
       console.log('postData:', postData);
       console.log("menuItem", data);
       this.cBMenuItem = data;
+      for (var i=0;i<this.cBMenuItem.length;i++) {
+        this.totalPrice += this.cBMenuItem[i].price;
+      }
+      this.totalPrice = this.totalPrice * (this.bookItem.bookPax);
+      
     }, error => {
       console.log(error);
     });

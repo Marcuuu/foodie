@@ -12,7 +12,6 @@ export class custBooking {
         public bookPax: string,
         public bookNotes: string,
         public bookStatus: string,
-        public menu_image: string,
-        public custID: string
+        public menu_image: string
     ) { }
 }

@@ -12,6 +12,7 @@ export class CustPastBookingDetailsPage {
   bookItem: any;
   loading: any;
   cBPMenuItem: any;
+  totalPrice: any=0;
   // this tells the tabs component which Pages should be each tab's root Page
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public custPBookData: CustPBookData, public http: HttpClient) {
     this.bookItem = navParams.get('data');
@@ -20,6 +21,10 @@ export class CustPastBookingDetailsPage {
       spinner: 'crescent',
       content: 'Cancelling'
     });
+  }
+
+  ionViewWillEnter() {
+    this.getBMenuItems();
   }
 
   getBMenuItems() {
@@ -42,6 +47,10 @@ export class CustPastBookingDetailsPage {
       console.log('postData:', postData);
       console.log("menuItem", data);
       this.cBPMenuItem = data;
+      for (var i=0;i<this.cBPMenuItem.length;i++) {
+        this.totalPrice += this.cBPMenuItem[i].price;
+      }
+      this.totalPrice = this.totalPrice * (this.bookItem.bookPax);
     }, error => {
       console.log(error);
     });

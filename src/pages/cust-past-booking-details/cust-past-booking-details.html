@@ -34,25 +34,21 @@
       </ion-item>
     </ion-list>
   </ion-card>
-  <ion-card id="pastBookingDetails-card25">
-    <ion-list>
-      <h3 id="pastBookingDetails-heading9" style="color:#000000;font-weight:400;">
-        Menu
-      </h3>
-      <ion-item color="none" id="pastBookingDetails-list-item99" *ngFor="let items of cBPMenuItem">
-        <ion-row style="align-items: flex-start">
-          <img src="{{items?.menuImg}}" />
-          <p>
-            {{items?.menuItem}}
-          </p>
-          <p item-right>
-            {{items?.price}}
-          </p>
-        </ion-row>
-      </ion-item>
-    </ion-list>
-  </ion-card>
+  <h5 style="color:#000000;font-size:1.6rem;">
+    Menu
+  </h5>
+  <ion-list class="menu-list">
+    <ion-item
+      color="none"
+      class="menu-item-each active"
+      *ngFor="let items of cBPMenuItem"
+    >
+      <img src="{{items?.menuImg}}" alt="" (click)="popupImage($event)" />
+      <p ion-text color="black">{{items?.menuItem}}</p>
+      <p ion-text color="black">${{items?.price | number:'1.2-2'}}</p>
+    </ion-item>
+  </ion-list>
   <h3 id="bookingDetails-heading2" style="color:#000000;text-align:right;">
-    Total Price: ${{bookItem.totalPrice}}
+    Total Price: ${{ totalPrice | number:'1.2-2' }}
   </h3>
 </ion-content>

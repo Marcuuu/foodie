@@ -8,6 +8,8 @@ import { DashboardData } from '../../providers/PDP-dashboardData';
 import { CustTabsPage } from '../CUST-tabs/tabs2';
 import { TabsControllerPage } from '../tabs-controller/tabs-controller';
 import { MenusData } from '../../providers/PDP-menuData';
+import { CustBookData } from '../../providers/Cust-bookingData';
+import { CustPBookData } from '../../providers/Cust-pastBookingData';
 
 
 @Component({
@@ -18,7 +20,7 @@ export class LoginPage {
   cust: any;
   loading: any;
 
-  constructor(public navCtrl: NavController, public http: HttpClient, public loadingCtrl: LoadingController, public dashboardData: DashboardData, public bookingData: BookingsData, public menusData: MenusData, public profileData: ProfileData) {
+  constructor(public navCtrl: NavController, public http: HttpClient, public loadingCtrl: LoadingController, public dashboardData: DashboardData, public bookingData: BookingsData, public menusData: MenusData, public profileData: ProfileData, public custBookData: CustBookData, public custPBookData: CustPBookData) {
     this.loading = this.loadingCtrl.create({
       spinner: 'crescent',
       content: 'Authenticating'
@@ -118,7 +120,8 @@ export class LoginPage {
 
 
   login(custId){
-
+    this.custBookData.getBookData();
+    this.custPBookData.getPBookData();
     this.loading.present();
     this.custLogin(custId);
 
